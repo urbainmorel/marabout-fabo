@@ -9,37 +9,67 @@ import Testimonials from '../components/sections/Testimonials.astro';
 import FaqAccordion from '../components/sections/FaqAccordion.astro';
 import BlogPreview from '../components/sections/BlogPreview.astro';
 import WhatsAppHub from '../components/sections/WhatsAppHub.astro';
+import { getHomePage, getTestimonials, getFaqItems, getSiteSettings } from '../lib/sanityClient';
+
+const [homePage, testimonials, faqs, siteSettings] = await Promise.all([
+  getHomePage(),
+  getTestimonials(),
+  getFaqItems(),
+  getSiteSettings(),
+]);
 ---
 
 <MainLayout
-  title="Retour Affectif Rapide & Voyance à Paris | Marabout Fabo Babassa"
-  description="Spécialiste du retour affectif rapide et du retour de l'être aimé à Paris et à distance. Marabout Fabo Babassa, grand voyant médium sérieux : couple, fidélité, désenvoûtement. Contact WhatsApp : 06 76 19 75 85."
+  title={`Retour Affectif Rapide & Voyance à Paris | ${siteSettings.brandTitle || 'Marabout Fabo Babassa'}`}
+  description={siteSettings.defaultMetaDescription}
   canonicalUrl="https://www.marabout-fabo-babassa.fr/"
 >
   <!-- Section 1 : Hero -->
-  <Hero />
+  <Hero
+    badge={homePage.heroBadge}
+    title={homePage.heroTitle}
+    lead={homePage.heroLead}
+    ctaWaText={homePage.heroCtaWaText}
+  />
 
   <!-- Section 2 : Présentation & Autorité (Le Marabout) -->
-  <AboutMarabout />
+  <AboutMarabout
+    badge={homePage.aboutBadge}
+    title={homePage.aboutTitle}
+    text1={homePage.aboutText1}
+    text2={homePage.aboutText2}
+  />
 
   <!-- Section 3 : Pôle Amour & Couple (Retour Affectif) -->
-  <LoveRituals />
+  <LoveRituals
+    title={homePage.ritualsTitle}
+    subtitle={homePage.ritualsSubtitle}
+  />
 
   <!-- Section 4 : Voyance, Désenvoûtement & Chance -->
-  <VoyanceProtection />
+  <VoyanceProtection
+    title={homePage.voyanceTitle}
+    subtitle={homePage.voyanceSubtitle}
+  />
 
   <!-- Section 5 : Déroulement d'une Consultation (Paris & Distance) -->
-  <ProcessSteps />
+  <ProcessSteps
+    title={homePage.stepsTitle}
+    subtitle={homePage.stepsSubtitle}
+  />
 
   <!-- Section 6 : Témoignages Clients (Avis France) -->
-  <Testimonials />
+  <Testimonials testimonials={testimonials} />
 
   <!-- Section 7 : Foire Aux Questions (FAQ Accordéon) -->
-  <FaqAccordion />
+  <FaqAccordion faqs={faqs} />
 
   <!-- Section 8 : Aperçu du Blog SEO (6 articles Sanity) -->
   <BlogPreview />
 
   <!-- Section 9 : Hub de Contact 100% WhatsApp (Zéro Formulaire) -->
-  <WhatsAppHub />
+  <WhatsAppHub
+    title={homePage.waHubTitle}
+    subtitle={homePage.waHubSubtitle}
+  />
 </MainLayout>

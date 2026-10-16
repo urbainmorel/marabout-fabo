@@ -2,6 +2,16 @@
 import { SITE_CONFIG } from '../../config/site';
 import Icon from '../ui/Icon.astro';
 
+export interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = 'Comment Fonctionne Votre Retour Affectif avec le Marabout Fabo Babassa ?',
+  subtitle = 'Un protocole spirituel clair, rigoureux et transparent en 4 étapes pour rétablir l’amour et l’harmonie dans votre vie.',
+} = Astro.props;
+
 const steps = [
   {
     num: '01',
@@ -28,8 +38,9 @@ const steps = [
       <div class="max-w-[820px] mb-14 reveal">
         <p class="eyebrow mb-6">Comment ça marche ?</p>
         <h2 class="display text-[34px] sm:text-[44px] lg:text-[52px]">
-          Comment Fonctionne Votre Retour Affectif avec le Marabout Fabo Babassa ?
+          {title}
         </h2>
+        {subtitle && <p class="lead mt-4 text-white/75">{subtitle}</p>}
       </div>
 
       <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

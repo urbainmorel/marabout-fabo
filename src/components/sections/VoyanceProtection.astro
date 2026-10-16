@@ -1,6 +1,16 @@
 ---
 import { SITE_CONFIG } from '../../config/site';
 
+export interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = 'Voyance Médiumnique, Désenvoûtement et Travaux Occultes',
+  subtitle = 'Au-delà du retour affectif, le Marabout Fabo Babassa vous accompagne à Paris et à distance pour lever tous les blocages invisibles qui freinent votre bonheur :',
+} = Astro.props;
+
 const poles = [
   {
     title: 'Consultation de Voyance Pure et Médiumnité',
@@ -30,10 +40,10 @@ const poles = [
   <div class="text-center max-w-[780px] mx-auto mb-14 reveal">
     <p class="eyebrow mb-6">Voyance &amp; Haute Protection</p>
     <h2 class="display text-[34px] sm:text-[44px] lg:text-[52px] text-ink-900">
-      Voyance Médiumnique, Désenvoûtement et Travaux Occultes
+      {title}
     </h2>
     <p class="lead mt-6">
-      Au-delà du retour affectif, le <strong class="text-ink-900 font-semibold">Marabout Fabo Babassa</strong> vous accompagne à Paris et à distance pour lever tous les blocages invisibles qui freinent votre bonheur :
+      {subtitle}
     </p>
   </div>
 

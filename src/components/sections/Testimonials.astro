@@ -1,10 +1,35 @@
 ---
+import type { SanityTestimonial } from '../../lib/sanityClient';
+
+export interface Props {
+  testimonials?: SanityTestimonial[];
+}
+
+const { testimonials } = Astro.props;
+
 const UserIcon = 'M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z';
 
 const Star = 'M11.48 3.5a.56.56 0 0 1 1.04 0l2.13 5.11 5.52.44c.5.04.7.66.32.99l-4.2 3.6 1.28 5.38a.56.56 0 0 1-.84.61L12 16.73l-4.73 2.9a.56.56 0 0 1-.84-.61l1.28-5.38-4.2-3.6a.56.56 0 0 1 .32-.99l5.52-.44 2.13-5.11Z';
 
-// 6 binômes = 12 témoignages (4 par ligne sur desktop = 2 binômes par ligne)
-const pairs = [
+interface TestimonialPair {
+  cardA: {
+    quote: string;
+    author: string;
+    role: string;
+    tag: string;
+  };
+  cardB?: {
+    author: string;
+    date: string;
+    stars: number;
+    title: string;
+    text: string;
+    tag: string;
+  };
+}
+
+// 6 binômes par défaut = 12 témoignages
+const DEFAULT_PAIRS: TestimonialPair[] = [
   {
     cardA: {
       quote: "Le Marabout Fabo a changé ma vie. En moins de 10 jours, mon mari qui avait quitté le domicile a coupé tout contact avec sa maîtresse pour revenir à la maison.",
@@ -102,6 +127,34 @@ const pairs = [
     },
   },
 ];
+
+const pairs: TestimonialPair[] = (testimonials && testimonials.length > 0)
+  ? testimonials.reduce<TestimonialPair[]>((acc, item, idx) => {
+      if (idx % 2 === 0) {
+        acc.push({
+          cardA: {
+            quote: item.text,
+            author: item.author,
+            role: item.location,
+            tag: item.title || item.serviceType || 'Retour Affectif',
+          },
+        });
+      } else {
+        const last = acc[acc.length - 1];
+        if (last) {
+          last.cardB = {
+            author: item.author,
+            date: item.location ? `${item.date} · ${item.location}` : item.date,
+            stars: item.rating || 5,
+            title: item.title || item.serviceType || 'Témoignage Client',
+            text: item.text,
+            tag: item.verified ? 'Avis Vérifié WhatsApp' : (item.serviceType || 'Avis Client'),
+          };
+        }
+      }
+      return acc;
+    }, [])
+  : DEFAULT_PAIRS;
 ---
 
 <section id="avis" class="py-24 lg:py-32 max-w-[1320px] mx-auto px-5 sm:px-8 relative overflow-hidden">
@@ -176,58 +229,60 @@ const pairs = [
         </div>
 
         <!-- Carte B : fond blanc surélevé (superposé en bas à droite) -->
-        <div class="card-b-wrapper card-b-anim relative z-[10] -mt-14 sm:-mt-18 ml-auto w-[92%] sm:w-[88%] transition-all duration-500">
-          <div class="float-idle-b">
-            <div class="card-b group/cardb relative overflow-hidden rounded-[26px] bg-white p-6 sm:p-7 shadow-[0_20px_45px_-12px_rgba(18,17,23,0.16)] ring-1 ring-ink-900/[0.08] transition-all duration-400 ease-out hover:shadow-[0_30px_60px_-15px_rgba(18,17,23,0.22),0_15px_30px_-10px_rgba(180,45,87,0.15)] hover:ring-accent-500/25 hover:-translate-y-2.5 hover:scale-[1.015]">
-              <!-- Reflet lumineux élégant (shimmer sweep) au survol -->
-              <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[26px]" aria-hidden="true">
-                <div class="shimmer-highlight absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent group-hover/cardb:animate-shimmer"></div>
-              </div>
-
-              <div class="relative z-10">
-                <div class="flex items-center gap-3.5 mb-4">
-                <!-- Avatar SVG Monochrome Blanc / Noir -->
-                <div class="w-12 h-12 rounded-full bg-ink-900 text-white flex items-center justify-center ring-2 ring-accent-200/80 shadow-sm shrink-0 transition-transform duration-300 group-hover/cardb:scale-105" aria-hidden="true">
-                  <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd" d={UserIcon} clip-rule="evenodd" />
-                  </svg>
-                </div>
-                  <div>
-                    <p class="font-bold text-[14.5px] text-ink-900 leading-tight">{pair.cardB.author}</p>
-                    <p class="text-[12.5px] text-ink-500 leading-tight mt-0.5">{pair.cardB.date}</p>
-                  </div>
+        {pair.cardB && (
+          <div class="card-b-wrapper card-b-anim relative z-[10] -mt-14 sm:-mt-18 ml-auto w-[92%] sm:w-[88%] transition-all duration-500">
+            <div class="float-idle-b">
+              <div class="card-b group/cardb relative overflow-hidden rounded-[26px] bg-white p-6 sm:p-7 shadow-[0_20px_45px_-12px_rgba(18,17,23,0.16)] ring-1 ring-ink-900/[0.08] transition-all duration-400 ease-out hover:shadow-[0_30px_60px_-15px_rgba(18,17,23,0.22),0_15px_30px_-10px_rgba(180,45,87,0.15)] hover:ring-accent-500/25 hover:-translate-y-2.5 hover:scale-[1.015]">
+                <!-- Reflet lumineux élégant (shimmer sweep) au survol -->
+                <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[26px]" aria-hidden="true">
+                  <div class="shimmer-highlight absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent group-hover/cardb:animate-shimmer"></div>
                 </div>
 
-                <!-- Étoiles de notation avec cascade séquentielle au survol -->
-                <div class="flex gap-1 text-amber-400 mb-2.5" aria-label="5 étoiles sur 5">
-                  {Array.from({ length: pair.cardB.stars }).map((_, sIdx) => (
-                    <svg 
-                      class="w-4 h-4 fill-current transition-all duration-300 group-hover/cardb:scale-125 group-hover/cardb:text-amber-500" 
-                      style={`transition-delay: ${sIdx * 45}ms;`}
-                      viewBox="0 0 24 24" 
-                      aria-hidden="true"
-                    >
-                      <path d={Star} />
+                <div class="relative z-10">
+                  <div class="flex items-center gap-3.5 mb-4">
+                  <!-- Avatar SVG Monochrome Blanc / Noir -->
+                  <div class="w-12 h-12 rounded-full bg-ink-900 text-white flex items-center justify-center ring-2 ring-accent-200/80 shadow-sm shrink-0 transition-transform duration-300 group-hover/cardb:scale-105" aria-hidden="true">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" d={UserIcon} clip-rule="evenodd" />
                     </svg>
-                  ))}
+                  </div>
+                    <div>
+                      <p class="font-bold text-[14.5px] text-ink-900 leading-tight">{pair.cardB.author}</p>
+                      <p class="text-[12.5px] text-ink-500 leading-tight mt-0.5">{pair.cardB.date}</p>
+                    </div>
+                  </div>
+
+                  <!-- Étoiles de notation avec cascade séquentielle au survol -->
+                  <div class="flex gap-1 text-amber-400 mb-2.5" aria-label="5 étoiles sur 5">
+                    {Array.from({ length: pair.cardB.stars }).map((_, sIdx) => (
+                      <svg 
+                        class="w-4 h-4 fill-current transition-all duration-300 group-hover/cardb:scale-125 group-hover/cardb:text-amber-500" 
+                        style={`transition-delay: ${sIdx * 45}ms;`}
+                        viewBox="0 0 24 24" 
+                        aria-hidden="true"
+                      >
+                        <path d={Star} />
+                      </svg>
+                    ))}
+                  </div>
+
+                  <h3 class="font-serif font-bold text-[17px] sm:text-[18px] text-ink-900 leading-[1.4] sm:leading-[1.38] mb-2.5 transition-colors duration-300 group-hover/cardb:text-oxblood-600">
+                    {pair.cardB.title}
+                  </h3>
+
+                  <p class="text-[13.5px] sm:text-[14px] leading-relaxed text-ink-600">
+                    {pair.cardB.text}
+                  </p>
                 </div>
-
-                <h3 class="font-serif font-bold text-[17px] sm:text-[18px] text-ink-900 leading-[1.4] sm:leading-[1.38] mb-2.5 transition-colors duration-300 group-hover/cardb:text-oxblood-600">
-                  {pair.cardB.title}
-                </h3>
-
-                <p class="text-[13.5px] sm:text-[14px] leading-relaxed text-ink-600">
-                  {pair.cardB.text}
-                </p>
               </div>
             </div>
-          </div>
 
-          <p class="text-[11px] font-bold tracking-[0.14em] uppercase text-accent-600/80 text-right pr-3 mt-2.5 flex items-center justify-end gap-1.5 transition-all duration-300 group-hover/cardb:text-oxblood-600 group-hover/cardb:-translate-x-1">
-            <span class={`w-1.5 h-1.5 rounded-full inline-block ${pair.cardB.tag.includes('WhatsApp') ? 'bg-whatsapp' : 'bg-accent-500'}`}></span>
-            <span>{pair.cardB.tag}</span>
-          </p>
-        </div>
+            <p class="text-[11px] font-bold tracking-[0.14em] uppercase text-accent-600/80 text-right pr-3 mt-2.5 flex items-center justify-end gap-1.5 transition-all duration-300 group-hover/cardb:text-oxblood-600 group-hover/cardb:-translate-x-1">
+              <span class={`w-1.5 h-1.5 rounded-full inline-block ${pair.cardB.tag.includes('WhatsApp') ? 'bg-whatsapp' : 'bg-accent-500'}`}></span>
+              <span>{pair.cardB.tag}</span>
+            </p>
+          </div>
+        )}
       </div>
     ))}
   </div>

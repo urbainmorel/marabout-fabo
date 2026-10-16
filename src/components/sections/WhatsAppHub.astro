@@ -1,6 +1,18 @@
 ---
 import { SITE_CONFIG } from '../../config/site';
 import Icon from '../ui/Icon.astro';
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  whatsappUrl?: string;
+}
+
+const {
+  title = 'Contactez le Marabout Fabo sur WhatsApp',
+  subtitle = 'Échangez directement et en toute confidentialité pour exposer votre situation sans jugement.',
+  whatsappUrl = SITE_CONFIG.whatsappUrls.general,
+} = Astro.props;
 ---
 
 <section id="contact" class="px-3 sm:px-5 py-12 lg:py-16">
@@ -16,14 +28,14 @@ import Icon from '../ui/Icon.astro';
       </div>
 
       <h2 class="display text-[32px] sm:text-[44px] lg:text-[50px] text-white">
-        Contactez le Marabout Fabo sur WhatsApp
+        {title}
       </h2>
       <p class="mt-4 text-[16px] sm:text-[17px] text-white/75 max-w-[620px] mx-auto">
-        Échangez directement et en toute confidentialité pour exposer votre situation sans jugement.
+        {subtitle}
       </p>
 
       <div class="mt-8 flex justify-center">
-        <a href={SITE_CONFIG.whatsappUrls.general} target="_blank" rel="noopener noreferrer" class="btn-wa !text-[15px] !px-8 !py-4 shadow-[0_12px_32px_-8px_rgba(31,143,85,0.7)]">
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="btn-wa !text-[15px] !px-8 !py-4 shadow-[0_12px_32px_-8px_rgba(31,143,85,0.7)]">
           <Icon name="wa" /><span>Démarrer ma consultation sur WhatsApp</span>
         </a>
       </div>

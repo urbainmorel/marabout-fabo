@@ -1,6 +1,27 @@
 ---
 import { SITE_CONFIG } from '../../config/site';
 import Icon from '../ui/Icon.astro';
+
+export interface Props {
+  badge?: string;
+  title?: string;
+  lead?: string;
+  ctaWaText?: string;
+}
+
+const {
+  badge = 'Grand Marabout Voyant Médium Sérieux à Paris & à Distance – 7j/7',
+  title = "Retour Affectif Rapide et Retour de l'Être Aimé avec le Marabout Fabo Babassa",
+  lead = "Vous souffrez d'une rupture amoureuse ? Votre conjoint(e) s'éloigne, vous a bloqué(e) ou vous a quitté(e) pour une autre personne ? Ne laissez pas le chagrin et le temps détruire votre bonheur. Spécialiste reconnu du retour affectif rapide, des travaux occultes d'amour et de la voyance médiumnique pure à Paris, le Marabout Fabo Babassa met son don héréditaire et ses rituels puissants à votre service pour faire revenir l'être aimé, sauver votre couple et débloquer votre vie.",
+  ctaWaText = 'Exposer ma situation',
+} = Astro.props;
+
+const formattedTitle = title.includes('Marabout Fabo Babassa')
+  ? title.replace(
+      'Marabout Fabo Babassa',
+      '<em class="italic font-serif not-italic bg-gradient-to-r from-accent-300 via-rose-200 to-accent-400 bg-clip-text text-transparent">Marabout Fabo Babassa</em>'
+    )
+  : title;
 ---
 
 <div id="accueil" class="relative overflow-hidden text-white on-dark bg-[#0a0718]">
@@ -36,21 +57,18 @@ import Icon from '../ui/Icon.astro';
       <div class="lg:col-span-7">
         <div class="inline-flex items-center gap-2.5 rounded-full bg-accent-950/60 ring-1 ring-accent-500/30 px-4 py-1.5 text-[11.5px] font-semibold tracking-[0.04em] text-accent-200 backdrop-blur-md mb-7 shadow-[0_0_24px_-4px_rgba(180,45,87,0.35)]">
           <span class="w-1.5 h-1.5 rounded-full bg-accent-400 shadow-[0_0_8px_#E07A98]"></span>
-          <span>Grand Marabout Voyant Médium Sérieux à Paris &amp; à Distance – 7j/7</span>
+          <span>{badge}</span>
         </div>
 
-        <h1 class="display text-[40px] sm:text-[56px] lg:text-[64px] xl:text-[72px] text-white">
-          Retour Affectif Rapide et Retour de l'Être Aimé avec le <em class="italic font-serif not-italic bg-gradient-to-r from-accent-300 via-rose-200 to-accent-400 bg-clip-text text-transparent">Marabout Fabo Babassa</em>
-        </h1>
+        <h1 class="display text-[40px] sm:text-[56px] lg:text-[64px] xl:text-[72px] text-white" set:html={formattedTitle} />
 
         <p class="lead mt-7 max-w-[620px] text-white/75">
-          Vous souffrez d'une rupture amoureuse ? Votre conjoint(e) s'éloigne, vous a bloqué(e) ou vous a quitté(e) pour une autre personne ? Ne laissez pas le chagrin et le temps détruire votre bonheur.
-          Spécialiste reconnu du <strong class="text-white font-semibold">retour affectif rapide</strong>, des <strong class="text-white font-semibold">travaux occultes d'amour</strong> et de la <strong class="text-white font-semibold">voyance médiumnique pure</strong> à Paris, le <strong class="text-accent-300 font-semibold">Marabout Fabo Babassa</strong> met son don héréditaire et ses rituels puissants à votre service pour faire revenir l'être aimé, sauver votre couple et débloquer votre vie.
+          {lead}
         </p>
 
         <div class="mt-9 flex flex-col sm:flex-row gap-3">
           <a href={SITE_CONFIG.whatsappUrls.retourAffectif} target="_blank" rel="noopener noreferrer" class="btn-wa shadow-[0_12px_32px_-8px_rgba(31,143,85,0.7)]">
-            <Icon name="wa" /><span>Exposer ma situation</span>
+            <Icon name="wa" /><span>{ctaWaText}</span>
           </a>
           <a href={SITE_CONFIG.phoneHref} class="btn bg-white/10 text-white ring-1 ring-white/20 hover:bg-white hover:text-ink-950 hover:ring-white transition-all duration-300 backdrop-blur-md">
             <Icon name="phone" /><span>Appeler le cabinet</span>

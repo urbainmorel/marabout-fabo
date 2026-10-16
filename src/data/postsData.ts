@@ -14,6 +14,7 @@ export interface BlogPost {
   imageAlt: string;
   whatsappCtaText: string;
   content: string; // Markdown or rich HTML content
+  body?: any[]; // Sanity Portable Text blocks
 }
 
 export const BLOG_POSTS: BlogPost[] = [

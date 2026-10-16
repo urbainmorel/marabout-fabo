@@ -74,6 +74,15 @@ const rituals = [
     cta: "Protéger et officialiser mon couple",
   },
 ];
+export interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = "Spécialiste du Retour Affectif et des Rituels d'Amour Puissants",
+  subtitle = "Que votre séparation date de quelques jours ou de plusieurs mois, les rituels de haute magie blanche et de magie rouge amoureuse permettent de toucher directement le cœur et l'esprit de la personne que vous aimez pour sauver votre union :",
+} = Astro.props;
 ---
 
 <section id="retour-affectif" class="py-20 lg:py-28">
@@ -82,10 +91,10 @@ const rituals = [
     <div class="max-w-[820px] reveal">
       <p class="eyebrow mb-6">Puissants rituels d'amour</p>
       <h2 class="display text-[34px] sm:text-[44px] lg:text-[52px] text-ink-900">
-        Spécialiste du Retour Affectif et des Rituels d'Amour Puissants
+        {title}
       </h2>
       <p class="lead mt-6">
-        Que votre séparation date de quelques jours ou de plusieurs mois, les rituels de haute magie blanche et de magie rouge amoureuse permettent de toucher directement le cœur et l'esprit de la personne que vous aimez pour sauver votre union :
+        {subtitle}
       </p>
     </div>
   </div>

@@ -16,7 +16,7 @@ const payload = JSON.stringify({
   dataset: 'production',
   rule: {
     on: ['create', 'update', 'delete'],
-    filter: '_type == "post"'
+    filter: '_type in ["post", "siteSettings", "homePage", "testimonial", "faqItem"]'
   },
   httpMethod: 'POST',
   apiVersion: 'v2021-06-07'

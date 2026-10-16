@@ -2,6 +2,7 @@
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
 import { getAllPosts } from '../../lib/sanityClient';
 import type { BlogPost } from '../../data/postsData';
+import { PortableText } from 'astro-portabletext';
 
 export async function getStaticPaths() {
   const posts = await getAllPosts();
@@ -16,6 +17,8 @@ export interface Props {
 }
 
 const { post } = Astro.props;
+
+const hasPortableText = Array.isArray(post.body) && post.body.length > 0;
 
 // Helper léger de conversion Markdown vers HTML sémantique
 function markdownToHtml(md: string): string {
@@ -77,9 +80,15 @@ function parseInline(text: string): string {
     .replace(/\n/g, '<br />');
 }
 
-const htmlContent = markdownToHtml(post.content);
+const htmlContent = !hasPortableText && post.content ? markdownToHtml(post.content) : '';
 ---
 
 <BlogPostLayout post={post}>
-  <div set:html={htmlContent} />
+  {hasPortableText && post.body ? (
+    <div class="prose max-w-none prose-h2:font-serif prose-h2:font-semibold prose-h2:text-ink-900 prose-h3:font-serif prose-h3:font-semibold prose-h3:text-accent-600 prose-p:text-ink-700 prose-p:leading-[1.8] prose-blockquote:border-l-4 prose-blockquote:border-accent-500 prose-blockquote:bg-mist-100 prose-blockquote:p-4 prose-blockquote:italic prose-a:text-accent-600 prose-a:underline hover:prose-a:text-ink-900 prose-ul:list-disc prose-ol:list-decimal">
+      <PortableText value={post.body} />
+    </div>
+  ) : (
+    <div set:html={htmlContent} />
+  )}
 </BlogPostLayout>
