@@ -14,12 +14,14 @@ export default defineConfig({
   output: 'static',
   compressHTML: true,
   build: {
-    inlineStylesheets: 'always',
+    inlineStylesheets: 'auto',
   },
   integrations: [
     react(),
     tailwind(),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('/studio'),
+    }),
     sanity({
       projectId,
       dataset,

@@ -1,0 +1,73 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { SITE_CONFIG } from '../config/site';
+---
+
+<MainLayout
+  title={`Mentions Légales | ${SITE_CONFIG.name}`}
+  description="Mentions légales, informations éditeur et hébergement du site officiel du Marabout Fabo Babassa à Paris."
+  canonicalUrl={`${SITE_CONFIG.siteUrl}/mentions-legales`}
+>
+  <div class="py-16 sm:py-24 max-w-[900px] mx-auto px-5 sm:px-8">
+    <div class="mb-12">
+      <p class="eyebrow mb-4">Informations Réglementaires</p>
+      <h1 class="display text-[36px] sm:text-[46px] text-ink-900">Mentions Légales</h1>
+      <p class="text-[14px] text-ink-500 mt-2">Dernière mise à jour : Octobre 2026</p>
+    </div>
+
+    <div class="prose prose-slate max-w-none text-ink-700 space-y-8 leading-relaxed">
+      <section class="bg-white/70 p-6 sm:p-8 rounded-2xl border border-ink-900/5">
+        <h2 class="font-serif text-[22px] text-ink-900 mb-4">1. Éditeur du Site</h2>
+        <p>
+          Le présent site internet accessible à l'adresse <strong>https://www.marabout-fabo.com</strong> est édité par :
+        </p>
+        <ul class="list-disc list-inside space-y-2 mt-3">
+          <li><strong>Identité professionnelle :</strong> Marabout Fabo Babassa</li>
+          <li><strong>Activité :</strong> Praticien en arts divinatoires traditionnels, voyance et accompagnement spirituel</li>
+          <li><strong>Localisation :</strong> Paris (75000), Île-de-France, France</li>
+          <li><strong>Téléphone direct :</strong> <a href={SITE_CONFIG.phoneHref} class="text-accent-600 underline font-medium">{SITE_CONFIG.phoneDisplay}</a></li>
+          <li><strong>WhatsApp :</strong> <a href={SITE_CONFIG.whatsappUrls.general} target="_blank" rel="noopener noreferrer" class="text-whatsapp underline font-medium">{SITE_CONFIG.phoneIntl}</a></li>
+          <li><strong>Directeur de la publication :</strong> Marabout Fabo Babassa</li>
+        </ul>
+      </section>
+
+      <section class="bg-white/70 p-6 sm:p-8 rounded-2xl border border-ink-900/5">
+        <h2 class="font-serif text-[22px] text-ink-900 mb-4">2. Hébergement du Site</h2>
+        <p>Le site est hébergé sur une infrastructure internationale de diffusion sécurisée :</p>
+        <ul class="list-disc list-inside space-y-2 mt-3">
+          <li><strong>Hébergeur :</strong> Cloudflare Inc.</li>
+          <li><strong>Siège social :</strong> 101 Townsend St, San Francisco, CA 94107, USA</li>
+          <li><strong>Site web :</strong> <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" class="text-accent-600 underline">www.cloudflare.com</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-white/70 p-6 sm:p-8 rounded-2xl border border-ink-900/5">
+        <h2 class="font-serif text-[22px] text-ink-900 mb-4">3. Avertissement & Cadre d'Exercice (Arts Divinatoires)</h2>
+        <p>
+          Conformément aux dispositions légales et déontologiques relatives aux arts divinatoires et aux traditions ésotériques :
+        </p>
+        <ul class="list-disc list-inside space-y-2 mt-3">
+          <li>
+            Les consultations spirituelles, rituels d'harmonisation et lectures divinatoires sont exclusivement réservés aux personnes physiques <strong>majeures</strong> (âgées de 18 ans et plus).
+          </li>
+          <li>
+            Les pratiques traditionnelles et énergétiques relèvent d'une <strong>obligation de moyens</strong> et d'accompagnement bienveillant. La spiritualité et la voyance n'étant pas des sciences exactes, aucun résultat déterministe absolu ne saurait être garanti par avance.
+          </li>
+          <li>
+            <strong>Santé & Droit :</strong> Les consultations ne remplacent en aucun cas un traitement médical, une prise en charge psychiatrique ou psychologique, ni un conseil juridique ou financier délivré par des professionnels habilités. Aucun arrêt de traitement médical ne sera jamais préconisé.
+          </li>
+        </ul>
+      </section>
+
+      <section class="bg-white/70 p-6 sm:p-8 rounded-2xl border border-ink-900/5">
+        <h2 class="font-serif text-[22px] text-ink-900 mb-4">4. Propriété Intellectuelle</h2>
+        <p>
+          L'intégralité des éléments constitutifs du site (textes, articles de guides spirituels, charte graphique, mise en page, logo et photographies optimisées) sont protégés par le droit de la propriété intellectuelle au titre du droit d'auteur.
+        </p>
+        <p class="mt-2">
+          Toute reproduction, distribution, modification ou utilisation, même partielle, sans autorisation préalable écrite expresse est strictement interdite.
+        </p>
+      </section>
+    </div>
+  </div>
+</MainLayout>

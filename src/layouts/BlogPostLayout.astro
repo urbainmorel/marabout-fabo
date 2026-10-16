@@ -11,10 +11,13 @@ export interface Props {
 const { post } = Astro.props;
 
 const fullUrl = `${SITE_CONFIG.siteUrl}/blog/${post.slug}`;
+const pageTitle = post.metaTitle.includes('Fabo') || post.metaTitle.includes('Marabout')
+  ? post.metaTitle
+  : `${post.metaTitle} | ${SITE_CONFIG.name}`;
 ---
 
 <MainLayout
-  title={`${post.metaTitle} | ${SITE_CONFIG.name}`}
+  title={pageTitle}
   description={post.metaDescription}
   canonicalUrl={fullUrl}
   image={post.image || '/images/og-banner-marabout-fabo-babassa.webp'}

@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /studio/
+Disallow: /studio
 
-Sitemap: https://www.marabout-fabo-babassa.fr/sitemap-index.xml
+Sitemap: https://www.marabout-fabo.com/sitemap-index.xml

@@ -9,24 +9,23 @@ import Testimonials from '../components/sections/Testimonials.astro';
 import FaqAccordion from '../components/sections/FaqAccordion.astro';
 import BlogPreview from '../components/sections/BlogPreview.astro';
 import WhatsAppHub from '../components/sections/WhatsAppHub.astro';
-import { getHomePage, getTestimonials, getFaqItems, getSiteSettings } from '../lib/sanityClient';
+import { getHomePage, getTestimonials, getFaqItems } from '../lib/sanityClient';
 
-const [homePage, testimonials, faqs, siteSettings] = await Promise.all([
+const [homePage, testimonials, faqs] = await Promise.all([
   getHomePage(),
   getTestimonials(),
   getFaqItems(),
-  getSiteSettings(),
 ]);
 ---
 
 <MainLayout
-  title={`Retour Affectif Rapide & Voyance à Paris | ${siteSettings.brandTitle || 'Marabout Fabo Babassa'}`}
-  description={siteSettings.defaultMetaDescription}
-  canonicalUrl="https://www.marabout-fabo-babassa.fr/"
+  title="Retour Affectif Rapide & Voyance à Paris | Marabout Fabo Babassa"
+  description="Grand voyant médium africain à Paris et à distance : retour affectif sérieux, fidélité et protection. Contact direct WhatsApp au 06 76 19 75 85."
+  canonicalUrl="https://www.marabout-fabo.com/"
+  hasFaq={true}
 >
   <!-- Section 1 : Hero -->
   <Hero
-    badge={homePage.heroBadge}
     title={homePage.heroTitle}
     lead={homePage.heroLead}
     ctaWaText={homePage.heroCtaWaText}

@@ -734,7 +734,7 @@ Une maison protégée spirituellement devient un bouclier impénétrable où cha
     excerpt: 'Attirer l’abondance financière, débloquer les litiges commerciaux et favoriser les opportunités d’ascension grâce aux rituels d’ouverture des chemins.',
     publishedAt: '2026-07-26T11:00:00Z',
     readingTime: '7 min',
-    image: '/images/rituel-chance-prospérite-financiere-1.webp',
+    image: '/images/rituel-chance-prosperite-financiere-1.webp',
     imageAlt: 'Rituels de chance aux affaires et réussite financière',
     whatsappCtaText: 'Bonjour Marabout Fabo Babassa, je souhaite faire un rituel de chance et prospérité financière.',
     content: `## 1. Pourquoi certaines personnes travaillent dur sans jamais récolter les fruits ?

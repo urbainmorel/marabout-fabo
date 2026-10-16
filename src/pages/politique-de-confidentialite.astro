@@ -1,0 +1,73 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { SITE_CONFIG } from '../config/site';
+---
+
+<MainLayout
+  title={`Politique de Confidentialité & RGPD | ${SITE_CONFIG.name}`}
+  description="Politique de confidentialité et protection des données personnelles (RGPD) du Marabout Fabo Babassa."
+  canonicalUrl={`${SITE_CONFIG.siteUrl}/politique-de-confidentialite`}
+>
+  <div class="py-16 sm:py-24 max-w-[900px] mx-auto px-5 sm:px-8">
+    <div class="mb-12">
+      <p class="eyebrow mb-4">Protection des Données & Vie Privée</p>
+      <h1 class="display text-[36px] sm:text-[46px] text-ink-900">Politique de Confidentialité</h1>
+      <p class="text-[14px] text-ink-500 mt-2">Conforme au Règlement Général sur la Protection des Données (RGPD - UE 2016/679)</p>
+    </div>
+
+    <div class="prose prose-slate max-w-none text-ink-700 space-y-8 leading-relaxed">
+      <section class="bg-white/70 p-6 sm:p-8 rounded-2xl border border-ink-900/5">
+        <h2 class="font-serif text-[22px] text-ink-900 mb-4">1. Engagement de Confidentialité et Secret Spirituel</h2>
+        <p>
+          La relation entre le consultant et le <strong>Marabout Fabo Babassa</strong> repose sur une confiance absolue et le respect strict du secret professionnel.
+          Toutes les informations partagées dans le cadre des consultations de voyance et des travaux spirituels (problématiques de couple, séparations, photos, prénoms, dates de naissance) demeurent rigoureusement confidentielles et ne sont jamais divulguées, louées ou cédées à un quelconque tiers.
+        </p>
+      </section>
+
+      <section class="bg-white/70 p-6 sm:p-8 rounded-2xl border border-ink-900/5">
+        <h2 class="font-serif text-[22px] text-ink-900 mb-4">2. Données Collectées & Finalités</h2>
+        <p>
+          Le présent site internet est conçu dans une démarche de minimisation stricte des données (Privacy by Design). Il ne dispose d'aucun formulaire d'inscription en ligne ni de compte utilisateur.
+        </p>
+        <p class="mt-3">
+          Les seules données susceptibles d'être traitées sont celles que vous transmettez volontairement lors de vos échanges directs par <strong>WhatsApp</strong> ou par <strong>téléphone</strong> :
+        </p>
+        <ul class="list-disc list-inside space-y-2 mt-3">
+          <li><strong>Identité :</strong> Prénom, numéro de téléphone, date de naissance.</li>
+          <li><strong>Supports rituels :</strong> Photographies transmises volontairement à des fins d'analyse énergétique et voyance.</li>
+          <li><strong>Finalité exclusive :</strong> Réalisation de la consultation spirituelle sollicitée et suivi de votre dossier d'accompagnement sentimental.</li>
+        </ul>
+      </section>
+
+      <section class="bg-white/70 p-6 sm:p-8 rounded-2xl border border-ink-900/5">
+        <h2 class="font-serif text-[22px] text-ink-900 mb-4">3. Conservation & Sécurité des Échanges</h2>
+        <p>
+          Les échanges s'effectuent via l'application sécurisée WhatsApp (chiffrement de bout en bout). Vos photographies et informations personnelles ne sont conservées que pendant la durée nécessaire à la conduite des travaux spirituels demandés.
+          À l'issue de l'accompagnement, les éléments peuvent être définitivement supprimés sur simple demande écrite.
+        </p>
+      </section>
+
+      <section class="bg-white/70 p-6 sm:p-8 rounded-2xl border border-ink-900/5">
+        <h2 class="font-serif text-[22px] text-ink-900 mb-4">4. Vos Droits Informatique et Libertés</h2>
+        <p>
+          Conformément au RGPD et à la loi « Informatique et Libertés », vous disposez des droits suivants concernant vos données :
+        </p>
+        <ul class="list-disc list-inside space-y-2 mt-3">
+          <li><strong>Droit d'accès et de rectification :</strong> Obtenir confirmation des données détenues et demander leur mise à jour.</li>
+          <li><strong>Droit à l'effacement (droit à l'oubli) :</strong> Demander la suppression immédiate et intégrale de vos messages et photographies transmises.</li>
+          <li><strong>Droit d'opposition et de retrait du consentement :</strong> Interrompre à tout moment un suivi spirituel engagé.</li>
+        </ul>
+        <p class="mt-4">
+          Pour exercer ces droits, vous pouvez vous adresser directement au Marabout Fabo Babassa par message WhatsApp au <strong>{SITE_CONFIG.phoneDisplay}</strong> ou par téléphone.
+        </p>
+      </section>
+
+      <section class="bg-white/70 p-6 sm:p-8 rounded-2xl border border-ink-900/5">
+        <h2 class="font-serif text-[22px] text-ink-900 mb-4">5. Cookies & Traceurs</h2>
+        <p>
+          Ce site ne dépose aucun cookie publicitaire intrusif ni traceur tiers destiné au profilage commercial. Seuls des cookies strictement techniques indispensables au fonctionnement du réseau de distribution Cloudflare (sécurité et protection contre les attaques DDoS) peuvent être activés.
+        </p>
+      </section>
+    </div>
+  </div>
+</MainLayout>

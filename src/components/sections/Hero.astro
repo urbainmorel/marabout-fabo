@@ -3,14 +3,12 @@ import { SITE_CONFIG } from '../../config/site';
 import Icon from '../ui/Icon.astro';
 
 export interface Props {
-  badge?: string;
   title?: string;
   lead?: string;
   ctaWaText?: string;
 }
 
 const {
-  badge = 'Grand Marabout Voyant Médium Sérieux à Paris & à Distance – 7j/7',
   title = "Retour Affectif Rapide et Retour de l'Être Aimé avec le Marabout Fabo Babassa",
   lead = "Vous souffrez d'une rupture amoureuse ? Votre conjoint(e) s'éloigne, vous a bloqué(e) ou vous a quitté(e) pour une autre personne ? Ne laissez pas le chagrin et le temps détruire votre bonheur. Spécialiste reconnu du retour affectif rapide, des travaux occultes d'amour et de la voyance médiumnique pure à Paris, le Marabout Fabo Babassa met son don héréditaire et ses rituels puissants à votre service pour faire revenir l'être aimé, sauver votre couple et débloquer votre vie.",
   ctaWaText = 'Exposer ma situation',
@@ -55,11 +53,6 @@ const formattedTitle = title.includes('Marabout Fabo Babassa')
   <section class="relative z-10 max-w-[1320px] mx-auto px-5 sm:px-8 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-12 items-center">
       <div class="lg:col-span-7">
-        <div class="inline-flex items-center gap-2.5 rounded-full bg-accent-950/60 ring-1 ring-accent-500/30 px-4 py-1.5 text-[11.5px] font-semibold tracking-[0.04em] text-accent-200 backdrop-blur-md mb-7 shadow-[0_0_24px_-4px_rgba(180,45,87,0.35)]">
-          <span class="w-1.5 h-1.5 rounded-full bg-accent-400 shadow-[0_0_8px_#E07A98]"></span>
-          <span>{badge}</span>
-        </div>
-
         <h1 class="display text-[40px] sm:text-[56px] lg:text-[64px] xl:text-[72px] text-white" set:html={formattedTitle} />
 
         <p class="lead mt-7 max-w-[620px] text-white/75">

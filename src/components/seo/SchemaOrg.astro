@@ -3,6 +3,7 @@ import { SITE_CONFIG } from '../../config/site';
 
 export interface Props {
   isArticle?: boolean;
+  hasFaq?: boolean;
   articleData?: {
     title: string;
     description: string;
@@ -12,7 +13,7 @@ export interface Props {
   };
 }
 
-const { isArticle = false, articleData } = Astro.props;
+const { isArticle = false, hasFaq = false, articleData } = Astro.props;
 
 const graph: any[] = [
   {
@@ -20,16 +21,23 @@ const graph: any[] = [
     '@id': `${SITE_CONFIG.siteUrl}/#marabout`,
     name: 'Marabout Fabo Babassa - Retour Affectif & Voyance Médium Paris',
     description:
-      'Grand marabout voyant médium africain sérieux à Paris. Spécialiste du retour affectif rapide, du retour de l\'être aimé, de la fidélité conjugale, du désenvoûtement et des travaux occultes à distance.',
+      'Grand marabout voyant médium africain sérieux à Paris. Spécialiste du retour affectif rapide, du retour de l\'être aimé, de la fidélité conjugale, du désenvoûtement et des travaux spirituels à distance.',
     url: `${SITE_CONFIG.siteUrl}/`,
     telephone: '+33676197585',
     priceRange: '€€',
     image: `${SITE_CONFIG.siteUrl}/images/marabout-fabo-babassa-retour-affectif-paris.webp`,
     address: {
       '@type': 'PostalAddress',
+      streetAddress: 'Consultations en cabinet sur RDV et à distance',
       addressLocality: 'Paris',
+      postalCode: '75000',
       addressRegion: 'Île-de-France',
       addressCountry: 'FR',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 48.8566,
+      longitude: 2.3522,
     },
     areaServed: [
       { '@type': 'Country', name: 'France' },
@@ -45,7 +53,10 @@ const graph: any[] = [
     },
     sameAs: ['https://wa.me/33676197585'],
   },
-  {
+];
+
+if (hasFaq) {
+  graph.push({
     '@type': 'FAQPage',
     '@id': `${SITE_CONFIG.siteUrl}/#faq`,
     mainEntity: [
@@ -54,7 +65,7 @@ const graph: any[] = [
         name: 'En combien de temps agit un rituel de retour affectif ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Chaque situation amoureuse est unique. Grâce à la puissance des travaux occultes de haute magie blanche et rouge, les premiers signes (apaisement, déblocage, reprise de contact de votre ex) se manifestent généralement sous 3 à 21 jours. Le délai précis vous est communiqué dès la première étude de voyance.',
+          text: 'Chaque situation amoureuse est unique. Les premiers signes d\'apaisement, de reprise de dialogue et de déblocage se manifestent progressivement selon la réceptivité énergétique de chaque couple.',
         },
       },
       {
@@ -62,7 +73,7 @@ const graph: any[] = [
         name: 'Les travaux de retour de l\'être aimé comportent-ils un danger ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Non, aucun danger ni choc en retour. Le Marabout Fabo Babassa pratique uniquement des rituels d\'amour bienveillants et protégés qui réveillent les sentiments sincères et enlèvent les blocages sans jamais nuire à la personne aimée.',
+          text: 'Non, aucun danger ni choc en retour. Le Marabout Fabo Babassa pratique uniquement des rituels bienveillants et protecteurs qui favorisent l\'harmonie et le libre arbitre.',
         },
       },
       {
@@ -70,7 +81,7 @@ const graph: any[] = [
         name: 'Comment consulter le Marabout Fabo Babassa à Paris ou à distance ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Vous pouvez consulter le Marabout Fabo Babassa directement à son cabinet à Paris sur rendez-vous, ou à distance par WhatsApp et téléphone au 06 76 19 75 85. Les rituels à distance sur photos, prénoms et dates de naissance ont exactement la même efficacité.',
+          text: 'Vous pouvez consulter le Marabout Fabo Babassa directement à son cabinet à Paris sur rendez-vous, ou à distance par WhatsApp et téléphone au 06 76 19 75 85.',
         },
       },
       {
@@ -78,12 +89,12 @@ const graph: any[] = [
         name: 'Mon ex saura-t-il que j\'ai fait appel à un marabout pour le faire revenir ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Jamais. Le travail spirituel agit de manière invisible et naturelle sur le cœur et les pensées. Votre partenaire reviendra vers vous de son propre gré avec le sentiment que vous lui manquez profondément. La discrétion est garantie à 100 %.',
+          text: 'Jamais. Toute démarche est strictement confidentielle et respecte le secret professionnel le plus rigoureux.',
         },
       },
     ],
-  },
-];
+  });
+}
 
 if (isArticle && articleData) {
   graph.push({
@@ -113,6 +124,31 @@ if (isArticle && articleData) {
       '@type': 'WebPage',
       '@id': articleData.url,
     },
+  });
+
+  graph.push({
+    '@type': 'BreadcrumbList',
+    '@id': `${articleData.url}#breadcrumb`,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Accueil',
+        item: `${SITE_CONFIG.siteUrl}/`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Guides & Rituels',
+        item: `${SITE_CONFIG.siteUrl}/blog`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: articleData.title,
+        item: articleData.url,
+      },
+    ],
   });
 }
 

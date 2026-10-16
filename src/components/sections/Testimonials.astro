@@ -43,7 +43,7 @@ const DEFAULT_PAIRS: TestimonialPair[] = [
       stars: 5,
       title: "Un retour inespéré !",
       text: "Mon ex m'avait bloqué partout depuis 4 mois. Après la voyance et le rituel, elle m'a envoyé un message d'elle-même. Nous sommes à nouveau ensemble.",
-      tag: "Avis Vérifié WhatsApp",
+      tag: "Retour de consultation",
     },
   },
   {
@@ -148,7 +148,7 @@ const pairs: TestimonialPair[] = (testimonials && testimonials.length > 0)
             stars: item.rating || 5,
             title: item.title || item.serviceType || 'Témoignage Client',
             text: item.text,
-            tag: item.verified ? 'Avis Vérifié WhatsApp' : (item.serviceType || 'Avis Client'),
+            tag: item.serviceType || 'Retour de consultation',
           };
         }
       }
@@ -163,7 +163,7 @@ const pairs: TestimonialPair[] = (testimonials && testimonials.length > 0)
   <div class="pointer-events-none absolute bottom-12 right-1/4 translate-x-1/2 w-[580px] h-[580px] bg-oxblood-600/5 rounded-full blur-[130px] -z-10" aria-hidden="true"></div>
 
   <div class="text-center max-w-[820px] mx-auto mb-16 lg:mb-24 reveal">
-    <p class="eyebrow mb-6">Témoignages &amp; Avis Vérifiés</p>
+    <p class="eyebrow mb-6">Témoignages &amp; Retours d'Expérience</p>
     <h2 class="display text-[34px] sm:text-[44px] lg:text-[52px] text-ink-900">
       Avis et Témoignages : Ils Ont Retrouvé l'Amour avec le Marabout Fabo Babassa
     </h2>
@@ -285,6 +285,12 @@ const pairs: TestimonialPair[] = (testimonials && testimonials.length > 0)
         )}
       </div>
     ))}
+  </div>
+
+  <div class="mt-14 text-center">
+    <p class="text-[12.5px] text-ink-500 max-w-[680px] mx-auto italic leading-relaxed">
+      * Les retours d'expérience présentés ci-dessus sont des témoignages personnels de consultants. Dans le cadre de l'accompagnement spirituel, chaque situation humaine est unique et les résultats dépendent de la réceptivité et des circonstances propres à chaque démarche.
+    </p>
   </div>
 </section>
 
