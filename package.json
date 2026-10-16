@@ -12,7 +12,8 @@
     "astro": "astro",
     "optimize-images": "node scripts/optimize-images.mjs",
     "seed-sanity": "npx tsx --env-file=.env scripts/seed-sanity-posts.ts",
-    "seed-sanity-all": "npx tsx --env-file=.env scripts/seed-sanity-all.ts"
+    "seed-sanity-all": "npx tsx --env-file=.env scripts/seed-sanity-all.ts",
+    "postinstall": "node scripts/patch-sanity-astro.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
