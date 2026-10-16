@@ -65,7 +65,7 @@ En France, les internautes en détresse sentimentale ou spirituelle ne cherchent
 │   │   ├── layout/
 │   │   │   ├── Header.astro       # Sticky Header avec navigation fluide + CTA WhatsApp
 │   │   │   ├── Footer.astro       # Pied de page SEO local Paris + mentions légales
-│   │   │   └── FloatingWhatsApp.astro # Bouton flottant Desktop + Barre fixe Mobile
+│   │   │   └── FloatingWhatsApp.astro # Bouton flottant WhatsApp officiel (Mobile & Desktop)
 │   │   ├── sections/              # Sections de la Landing Page Monopage
 │   │   │   ├── Hero.astro
 │   │   │   ├── AboutMarabout.astro
