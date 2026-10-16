@@ -1,0 +1,32 @@
+---
+import { SITE_CONFIG } from '../../config/site';
+import Icon from '../ui/Icon.astro';
+---
+
+<section id="contact" class="px-3 sm:px-5 py-12 lg:py-16">
+  <div class="relative overflow-hidden rounded-[36px] sm:rounded-[44px] bg-[#0c0a12] text-white p-10 sm:p-16 lg:p-20 max-w-[1320px] mx-auto text-center ring-1 ring-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)]">
+    <!-- Fond d'ambiance avec lueur subtile -->
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_65%_65%_at_50%_0%,rgba(180,45,87,0.28)_0%,rgba(106,21,49,0.1)_50%,transparent_75%)]"></div>
+    <div class="pointer-events-none absolute inset-0 -z-10 opacity-[0.10] [background-image:linear-gradient(rgba(247,220,228,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(247,220,228,0.12)_1px,transparent_1px)] [background-size:48px_48px]"></div>
+
+    <div class="relative max-w-[820px] mx-auto reveal">
+      <div class="inline-flex items-center gap-2 rounded-full bg-accent-950/70 ring-1 ring-accent-500/30 px-4 py-1.5 text-[11.5px] font-semibold tracking-[0.04em] text-accent-200 backdrop-blur-md mb-6 shadow-[0_0_20px_-3px_rgba(180,45,87,0.35)]">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent-400 shadow-[0_0_8px_#E07A98]"></span>
+        <span>Réponse Immédiate 7j/7</span>
+      </div>
+
+      <h2 class="display text-[32px] sm:text-[44px] lg:text-[50px] text-white">
+        Contactez le Marabout Fabo sur WhatsApp
+      </h2>
+      <p class="mt-4 text-[16px] sm:text-[17px] text-white/75 max-w-[620px] mx-auto">
+        Échangez directement et en toute confidentialité pour exposer votre situation sans jugement.
+      </p>
+
+      <div class="mt-8 flex justify-center">
+        <a href={SITE_CONFIG.whatsappUrls.general} target="_blank" rel="noopener noreferrer" class="btn-wa !text-[15px] !px-8 !py-4 shadow-[0_12px_32px_-8px_rgba(31,143,85,0.7)]">
+          <Icon name="wa" /><span>Démarrer ma consultation sur WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

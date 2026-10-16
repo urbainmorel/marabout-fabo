@@ -1,0 +1,150 @@
+---
+import { SITE_CONFIG } from '../../config/site';
+import Icon from '../ui/Icon.astro';
+---
+
+<div id="accueil" class="relative overflow-hidden text-white on-dark bg-[#0a0718]">
+  <!-- 1. Ciel bleu nuit / cobalt éclatant à gauche et rose magenta éclatant à droite -->
+  <div
+    class="pointer-events-none absolute inset-0 z-0"
+    style="background: radial-gradient(circle at 10% 70%, rgba(37,99,235,0.7) 0%, rgba(29,78,216,0.45) 30%, rgba(30,27,75,0.2) 60%, transparent 80%), radial-gradient(circle at 90% 70%, rgba(225,29,72,0.65) 0%, rgba(190,18,60,0.4) 30%, rgba(136,19,55,0.2) 60%, transparent 80%), linear-gradient(180deg, #0e0926 0%, #0a0718 50%, #060410 100%);"
+  ></div>
+
+  <!-- 2. Nappe d'ondes géométriques / particules de lumière de la maquette (z-0 au-dessus du dégradé) -->
+  <svg class="pointer-events-none absolute inset-0 z-0 w-full h-full opacity-60 mix-blend-screen" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 900">
+    <defs>
+      <linearGradient id="waveGradHero" x1="0%" y1="100%" x2="100%" y2="30%">
+        <stop offset="0%" stop-color="#38bdf8" stop-opacity="1" />
+        <stop offset="25%" stop-color="#60a5fa" stop-opacity="0.9" />
+        <stop offset="50%" stop-color="#a855f7" stop-opacity="0.85" />
+        <stop offset="75%" stop-color="#ec4899" stop-opacity="0.95" />
+        <stop offset="100%" stop-color="#fb7185" stop-opacity="1" />
+      </linearGradient>
+    </defs>
+    <!-- Multiples courbes de flux d'ondes -->
+    <path d="M -100,820 C 250,920 500,680 850,710 C 1150,740 1350,580 1550,510" fill="none" stroke="url(#waveGradHero)" stroke-width="2.8" opacity="0.9" />
+    <path d="M -100,780 C 260,880 520,650 870,690 C 1170,720 1360,560 1550,480" fill="none" stroke="url(#waveGradHero)" stroke-width="2.4" opacity="0.8" />
+    <path d="M -100,740 C 270,840 540,620 890,670 C 1190,700 1370,540 1550,450" fill="none" stroke="url(#waveGradHero)" stroke-width="2.0" opacity="0.7" />
+    <path d="M -100,700 C 280,800 560,590 910,650 C 1210,680 1380,520 1550,420" fill="none" stroke="url(#waveGradHero)" stroke-width="1.8" opacity="0.6" />
+    <path d="M -100,660 C 290,760 580,560 930,630 C 1230,660 1390,500 1550,390" fill="none" stroke="url(#waveGradHero)" stroke-width="1.5" opacity="0.5" />
+    <path d="M -100,620 C 300,720 600,530 950,610 C 1250,640 1400,480 1550,360" fill="none" stroke="url(#waveGradHero)" stroke-width="1.3" opacity="0.4" />
+    <path d="M -100,580 C 310,680 620,500 970,590 C 1270,620 1410,460 1550,330" fill="none" stroke="url(#waveGradHero)" stroke-width="1.1" opacity="0.3" />
+  </svg>
+
+  <section class="relative z-10 max-w-[1320px] mx-auto px-5 sm:px-8 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-12 items-center">
+      <div class="lg:col-span-7">
+        <div class="inline-flex items-center gap-2.5 rounded-full bg-accent-950/60 ring-1 ring-accent-500/30 px-4 py-1.5 text-[11.5px] font-semibold tracking-[0.04em] text-accent-200 backdrop-blur-md mb-7 shadow-[0_0_24px_-4px_rgba(180,45,87,0.35)]">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-400 shadow-[0_0_8px_#E07A98]"></span>
+          <span>Grand Marabout Voyant Médium Sérieux à Paris &amp; à Distance – 7j/7</span>
+        </div>
+
+        <h1 class="display text-[40px] sm:text-[56px] lg:text-[64px] xl:text-[72px] text-white">
+          Retour Affectif Rapide et Retour de l'Être Aimé avec le <em class="italic font-serif not-italic bg-gradient-to-r from-accent-300 via-rose-200 to-accent-400 bg-clip-text text-transparent">Marabout Fabo Babassa</em>
+        </h1>
+
+        <p class="lead mt-7 max-w-[620px] text-white/75">
+          Vous souffrez d'une rupture amoureuse ? Votre conjoint(e) s'éloigne, vous a bloqué(e) ou vous a quitté(e) pour une autre personne ? Ne laissez pas le chagrin et le temps détruire votre bonheur.
+          Spécialiste reconnu du <strong class="text-white font-semibold">retour affectif rapide</strong>, des <strong class="text-white font-semibold">travaux occultes d'amour</strong> et de la <strong class="text-white font-semibold">voyance médiumnique pure</strong> à Paris, le <strong class="text-accent-300 font-semibold">Marabout Fabo Babassa</strong> met son don héréditaire et ses rituels puissants à votre service pour faire revenir l'être aimé, sauver votre couple et débloquer votre vie.
+        </p>
+
+        <div class="mt-9 flex flex-col sm:flex-row gap-3">
+          <a href={SITE_CONFIG.whatsappUrls.retourAffectif} target="_blank" rel="noopener noreferrer" class="btn-wa shadow-[0_12px_32px_-8px_rgba(31,143,85,0.7)]">
+            <Icon name="wa" /><span>Exposer ma situation</span>
+          </a>
+          <a href={SITE_CONFIG.phoneHref} class="btn bg-white/10 text-white ring-1 ring-white/20 hover:bg-white hover:text-ink-950 hover:ring-white transition-all duration-300 backdrop-blur-md">
+            <Icon name="phone" /><span>Appeler le cabinet</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Portrait + cartes flottantes -->
+      <div class="lg:col-span-5">
+        <div class="relative max-w-[460px] mx-auto">
+          <!-- Halo d'ambiance rubis en arrière-plan -->
+          <div class="absolute -inset-5 sm:-inset-8 rounded-[48px] bg-gradient-to-br from-accent-500/50 via-oxblood-600/40 to-transparent -rotate-3 blur-xl shadow-[0_0_80px_rgba(180,45,87,0.45)]"></div>
+          <div class="relative rounded-[36px] overflow-hidden ring-1 ring-white/20 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.9)]">
+            <img
+              src="/images/marabout-fabo-babassa-retour-affectif-paris.webp"
+              alt="Grand Marabout Fabo Babassa voyant médium spécialiste du retour affectif à Paris"
+              title="Marabout Fabo Babassa, voyant médium à Paris"
+              width="600"
+              height="750"
+              class="w-full h-auto object-cover aspect-[4/5]"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+            <!-- Fondu doux au bas du portrait -->
+            <div class="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#070509]/90 via-accent-950/25 to-transparent"></div>
+          </div>
+
+          <div class="absolute -left-3 sm:-left-10 bottom-8 rounded-[22px] px-5 py-4 flex items-center gap-4 bg-[#141219]/90 backdrop-blur-xl ring-1 ring-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
+            <span class="font-serif text-[34px] leading-none text-white">4.9</span>
+            <span class="leading-tight">
+              <span class="flex gap-0.5 text-accent-400 mb-1">
+                {Array.from({ length: 5 }).map(() => <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.48 3.5a.56.56 0 0 1 1.04 0l2.13 5.11 5.52.44c.5.04.7.66.32.99l-4.2 3.6 1.28 5.38a.56.56 0 0 1-.84.61L12 16.73l-4.73 2.9a.56.56 0 0 1-.84-.61l1.28-5.38-4.2-3.6a.56.56 0 0 1 .32-.99l5.52-.44 2.13-5.11Z" /></svg>)}
+              </span>
+              <span class="block text-[12px] text-white/70 font-medium">Plus de 140 retours positifs</span>
+            </span>
+          </div>
+
+          <div class="absolute -right-2 sm:-right-8 top-8 rounded-[22px] px-4 py-3 flex items-center gap-3 bg-[#141219]/90 backdrop-blur-xl ring-1 ring-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
+            <span class="w-2.5 h-2.5 rounded-full bg-whatsapp inline-block"></span>
+            <span class="text-[12.5px] font-semibold text-white">Réponse 7j/7 · 08h–23h</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Séparateur créatif de fin de section : transition fluide vers le fond blanc -->
+  <div class="relative w-full overflow-hidden leading-none z-10 -mb-px">
+    <!-- Halo rougeoyant d'ambiance sous l'arche -->
+    <div class="pointer-events-none absolute inset-x-0 bottom-6 sm:bottom-10 h-20 sm:h-28 bg-gradient-to-t from-accent-600/30 to-transparent blur-xl"></div>
+
+    <svg
+      class="relative block w-full h-[70px] sm:h-[105px] lg:h-[140px]"
+      viewBox="0 0 1440 160"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <defs>
+        <!-- Liseré rougeoyant haute précision sur la crête -->
+        <linearGradient id="heroSeparatorGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#8E1E42" stop-opacity="0" />
+          <stop offset="20%" stop-color="#A3264E" stop-opacity="0.35" />
+          <stop offset="50%" stop-color="#E07A98" stop-opacity="0.95" />
+          <stop offset="80%" stop-color="#A3264E" stop-opacity="0.35" />
+          <stop offset="100%" stop-color="#8E1E42" stop-opacity="0" />
+        </linearGradient>
+
+        <!-- Voile rubis de profondeur -->
+        <linearGradient id="heroSeparatorAura" x1="50%" y1="0%" x2="50%" y2="100%">
+          <stop offset="0%" stop-color="#B42D57" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="#6A1531" stop-opacity="0.05" />
+        </linearGradient>
+      </defs>
+
+      <!-- Voile intermédiaire translucide (effet de profondeur en décalé) -->
+      <path
+        d="M 0,35 Q 720,95 1440,35 L 1440,160 L 0,160 Z"
+        fill="url(#heroSeparatorAura)"
+      />
+
+      <!-- Courbe principale blanche fusionnant avec la section suivante -->
+      <path
+        d="M 0,55 Q 720,115 1440,55 L 1440,160 L 0,160 Z"
+        fill="#FFFFFF"
+      />
+
+      <!-- Liseré rubis sculpté sur l'arête de la vague -->
+      <path
+        d="M 0,55 Q 720,115 1440,55"
+        fill="none"
+        stroke="url(#heroSeparatorGlow)"
+        stroke-width="2.5"
+      />
+    </svg>
+  </div>
+</div>

@@ -1,0 +1,168 @@
+---
+import { SITE_CONFIG } from '../../config/site';
+import Icon from '../ui/Icon.astro';
+
+const rituals = [
+  {
+    id: 'rituel-retour-affectif',
+    eyebrow: "Rituel d'Amour 01 · Retour de l'Être Aimé",
+    title: "Retour Affectif Rapide et Retour de l'Être Aimé",
+    lead: "Votre ex s'éloigne, refuse le dialogue ou dit ne plus avoir de sentiments ? Ne laissez pas le temps et la fierté détruire votre histoire d'amour.",
+    text: "Ce rituel puissant de retour affectif dissout la colère, efface les rancœurs du passé et ravive intensément la flamme amoureuse au plus profond de l'être aimé. La personne ciblée ressent un manque irrésistible et revient d'elle-même vers vous avec tendresse et sincérité pour renouer une relation solide et durable.",
+    imageMain: '/images/rituel-retour-etre-aime-rapide-2.webp',
+    altMain: "Rituel de retour affectif rapide et retour de l'être aimé",
+    titleMain: "Rituel de retour affectif rapide",
+    imageSub: '/images/rituel-retour-affectif-distance-11.webp',
+    altSub: "Travaux occultes de retour affectif puissant à distance",
+    titleSub: "Retour affectif à distance",
+    cta: "Consulter pour ce rituel",
+  },
+  {
+    id: 'rituel-eloigner-rivale',
+    eyebrow: "Rituel d'Amour 02 · Séparation & Protection",
+    title: 'Éloigner une Rivale ou un Amant Définitivement',
+    lead: "Une tierce personne s'est immiscée dans votre foyer et détourne votre conjoint(e) ? Ou une rivale tente de briser votre couple ?",
+    text: "J'interviens par un rituel occulte ciblé de séparation et de désenvoûtement pour couper net cette mauvaise influence extérieure. Les disputes s'installent rapidement entre eux, les sentiments toxiques disparaissent et votre partenaire revient exclusivement vers vous, le cœur libéré de toute emprise néfaste.",
+    imageMain: '/images/rituel-eloigner-rivale-protection-couple.webp',
+    altMain: "Rituel pour éloigner une rivale définitivement et protéger le foyer",
+    titleMain: "Éloigner une rivale définitivement",
+    imageSub: '/images/rituel-protection-occulte-ancestrale-2.webp',
+    altSub: "Protection occulte du foyer contre les mauvaises influences",
+    titleSub: "Protection occulte du couple",
+    cta: "Éloigner une rivale maintenant",
+  },
+  {
+    id: 'rituel-fidelite-attachement',
+    eyebrow: "Rituel d'Amour 03 · Cadenas de Fidélité",
+    title: "Rituel de Fidélité et d'Attachement Amoureux",
+    lead: "Vous souffrez d'infidélités répétées, de mensonges ou de la peur constante de voir votre partenaire partir avec quelqu'un d'autre ?",
+    text: "Le rituel traditionnel du cadenas de fidélité et d'attachement affectif scelle l'engagement sentimental et physique de votre conjoint(e). Il apaise les tentations extérieures, neutralise les regards volages et ancre durablement la loyauté, le respect et l'amour sincère au cœur de votre relation.",
+    imageMain: '/images/rituel-amour-cadenas-fidelite-3.webp',
+    altMain: "Rituel du cadenas de fidélité et attachement affectif solide",
+    titleMain: "Rituel du cadenas de fidélité",
+    imageSub: '/images/rituel-attachement-amoureux-9.webp',
+    altSub: "Attachement amoureux solide et respect mutuel",
+    titleSub: "Attachement amoureux sacré",
+    cta: "Sceller la fidélité de mon couple",
+  },
+  {
+    id: 'rituel-sauver-couple-divorce',
+    eyebrow: "Rituel d'Amour 04 · Harmonie du Foyer",
+    title: 'Sauver son Couple, Stopper les Disputes et le Divorce',
+    lead: "La communication est rompue à la maison et vous êtes au bord de la rupture définitive ou d'une procédure de divorce ?",
+    text: "Ce rituel d'harmonisation spirituelle purifie le domicile, chasse les énergies négatives accumulées et désarme l'agressivité au sein du foyer. Il rétablit instantanément la tendresse, l'écoute mutuelle et le désir amoureux pour donner une seconde chance indestructible à votre union.",
+    imageMain: '/images/rituel-sauver-son-couple-8.webp',
+    altMain: "Rituel pour sauver son couple et stopper le divorce",
+    titleMain: "Sauver son couple du divorce",
+    imageSub: '/images/rituel-resolution-litiges-conflits-2.webp',
+    altSub: "Résolution des conflits de couple et apaisement des tensions",
+    titleSub: "Apaisement des conflits conjugaux",
+    cta: "Sauver mon couple du divorce",
+  },
+  {
+    id: 'rituel-protection-mariage',
+    eyebrow: "Rituel d'Amour 05 · Engagement & Mariage",
+    title: 'Protection du Couple et Engagement (Mariage)',
+    lead: "Votre partenaire hésite à s'engager, repousse sans cesse l'officialisation ou votre couple subit la jalousie de votre entourage ?",
+    text: "Je dresse un puissant bouclier spirituel occulte autour de votre union pour repousser les ondes négatives, neutraliser le mauvais œil et lever les freins psychologiques. Ce travail favorise la demande en mariage, la concrétisation de vos projets à deux et la protection pérenne de votre bonheur.",
+    imageMain: '/images/rituel-reconciliation-amoureuse-4.webp',
+    altMain: "Protection occulte du couple et rituel d'engagement et mariage",
+    titleMain: "Rituel d'engagement et officialisation",
+    imageSub: '/images/rituel-puissant-retour-affectif-10.webp',
+    altSub: "Bénédiction spirituelle et bouclier protecteur du couple",
+    titleSub: "Protection spirituelle du mariage",
+    cta: "Protéger et officialiser mon couple",
+  },
+];
+---
+
+<section id="retour-affectif" class="py-20 lg:py-28">
+  <!-- En-tête de section -->
+  <div class="max-w-[1320px] mx-auto px-5 sm:px-8 mb-16 lg:mb-20">
+    <div class="max-w-[820px] reveal">
+      <p class="eyebrow mb-6">Puissants rituels d'amour</p>
+      <h2 class="display text-[34px] sm:text-[44px] lg:text-[52px] text-ink-900">
+        Spécialiste du Retour Affectif et des Rituels d'Amour Puissants
+      </h2>
+      <p class="lead mt-6">
+        Que votre séparation date de quelques jours ou de plusieurs mois, les rituels de haute magie blanche et de magie rouge amoureuse permettent de toucher directement le cœur et l'esprit de la personne que vous aimez pour sauver votre union :
+      </p>
+    </div>
+  </div>
+
+  <!-- Sous-sections de chaque rituel avec le design exact de AboutMarabout -->
+  <div class="space-y-24 lg:space-y-32">
+    {rituals.map((r) => (
+      <div id={r.id} class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-6 first:pt-0">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 items-center">
+          <!-- Composition photo identique à AboutMarabout -->
+          <div class="lg:col-span-5 reveal">
+            <div class="relative pb-16 pr-10 sm:pr-16">
+              <div class="rounded-[32px] overflow-hidden shadow-[0_30px_60px_-30px_rgba(18,17,23,.4)]">
+                <img
+                  src={r.imageMain}
+                  alt={r.altMain}
+                  title={r.titleMain}
+                  width="400"
+                  height="500"
+                  class="w-full aspect-[4/5] object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="absolute right-0 bottom-0 w-[48%] rounded-[24px] overflow-hidden ring-[6px] ring-white shadow-[0_24px_50px_-20px_rgba(18,17,23,.45)]">
+                <img
+                  src={r.imageSub}
+                  alt={r.altSub}
+                  title={r.titleSub}
+                  width="400"
+                  height="500"
+                  class="w-full aspect-[4/5] object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Contenu identique à AboutMarabout -->
+          <div class="lg:col-span-7 reveal">
+            <p class="eyebrow mb-6">{r.eyebrow}</p>
+            <h3 class="display text-[32px] sm:text-[42px] lg:text-[48px] text-ink-900">
+              {r.title}
+            </h3>
+
+            <div class="mt-7 space-y-5 max-w-[640px]">
+              <p class="lead">
+                {r.lead}
+              </p>
+              <p class="text-[15px] leading-[1.8] text-ink-600">
+                {r.text}
+              </p>
+            </div>
+
+            <div class="mt-8">
+              <a href={SITE_CONFIG.whatsappUrls.retourAffectif} target="_blank" rel="noopener noreferrer" class="btn-ink">
+                <span>{r.cta}</span><Icon name="arrow" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Citation & CTA final -->
+  <div class="max-w-[1320px] mx-auto px-5 sm:px-8 mt-20 lg:mt-28">
+    <div class="on-dark grain rounded-[32px] bg-ink-900 text-white px-7 sm:px-12 py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center reveal">
+      <p class="lg:col-span-8 font-serif italic text-[24px] sm:text-[30px] leading-[1.3]">
+        « En amour, chaque jour compte. Ne laissez pas votre ex s'éloigner définitivement ou s'installer avec une autre personne. »
+      </p>
+      <div class="lg:col-span-4 lg:text-right">
+        <a href={SITE_CONFIG.whatsappUrls.retourAffectif} target="_blank" rel="noopener noreferrer" class="btn-wa w-full sm:w-auto">
+          <Icon name="wa" /><span>Parler de mon couple</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+---
+const faqs = [
+  {
+    q: 'En combien de temps agit un rituel de retour affectif ?',
+    a: 'Chaque situation amoureuse est unique. Grâce à la puissance des travaux occultes de haute magie blanche et rouge, les premiers signes (apaisement, déblocage, reprise de contact de votre ex) se manifestent généralement sous 3 à 21 jours. Le délai précis vous est communiqué dès la première étude de voyance.',
+  },
+  {
+    q: "Les travaux de retour de l'être aimé comportent-ils un danger ?",
+    a: "Non, aucun danger ni choc en retour. Le Marabout Fabo Babassa pratique uniquement des rituels d'amour bienveillants et protégés qui réveillent les sentiments sincères et enlèvent les blocages sans jamais nuire à la personne aimée.",
+  },
+  {
+    q: 'Comment consulter le Marabout Fabo Babassa à Paris ou à distance ?',
+    a: 'Vous pouvez consulter le Marabout Fabo Babassa directement à son cabinet à Paris sur rendez-vous, ou à distance par WhatsApp et téléphone au 06 76 19 75 85. Les rituels à distance réalisés à partir des photos, des prénoms et des dates de naissance ont exactement la même puissance qu\'en présentiel.',
+  },
+  {
+    q: "Mon ex saura-t-il que j'ai fait appel à un marabout pour le faire revenir ?",
+    a: 'Jamais. Le travail spirituel agit de manière invisible et naturelle sur le cœur, les émotions et les pensées. Votre partenaire reviendra vers vous de son propre gré avec le sentiment profond que vous lui manquez. La discrétion est garantie à 100 % et vos photos sont détruites une fois le rituel accompli.',
+  },
+];
+---
+
+<section id="faq" class="px-3 sm:px-5">
+  <div class="bg-mist-200 rounded-[40px] py-20 lg:py-28">
+    <div class="max-w-[1280px] mx-auto px-5 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <div class="lg:col-span-5 reveal">
+        <div class="lg:sticky lg:top-32">
+          <p class="eyebrow !bg-white mb-6">FAQ</p>
+          <h2 class="display text-[32px] sm:text-[40px] lg:text-[46px] text-ink-900">
+            Questions Fréquentes sur le Retour Affectif et les Travaux du Marabout Fabo Babassa
+          </h2>
+          <p class="lead mt-6">
+            Les réponses claires et précises aux interrogations les plus courantes avant d'engager vos travaux spirituels.
+          </p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 space-y-3 reveal">
+        {faqs.map((f, i) => (
+          <details class="group card !shadow-none open:shadow-[0_20px_50px_-25px_rgba(18,17,23,.25)]" open={i === 0}>
+            <summary class="flex items-center justify-between gap-6 cursor-pointer list-none p-6 sm:p-7">
+              <span class="flex items-start gap-4">
+                <span class="mt-0.5 w-8 h-8 rounded-xl bg-mist-200 text-[12px] font-semibold text-ink-700 flex items-center justify-center flex-shrink-0 group-open:bg-accent-500 group-open:text-white transition-colors">0{i + 1}</span>
+                <h3 class="font-serif text-[20px] sm:text-[22px] leading-[1.3] text-ink-900">{f.q}</h3>
+              </span>
+              <span class="w-9 h-9 flex-shrink-0 rounded-full ring-1 ring-ink-900/10 flex items-center justify-center text-ink-900 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </summary>
+            <p class="px-6 sm:px-7 pb-7 sm:pl-[76px] -mt-1 text-[15px] leading-[1.8] text-ink-600">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

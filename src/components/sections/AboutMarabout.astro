@@ -1,0 +1,42 @@
+---
+import { SITE_CONFIG } from '../../config/site';
+import Icon from '../ui/Icon.astro';
+---
+
+<section id="le-marabout" class="py-24 lg:py-32 max-w-[1320px] mx-auto px-5 sm:px-8">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 items-center">
+    <!-- Composition photo -->
+    <div class="lg:col-span-5 reveal">
+      <div class="relative pb-16 pr-10 sm:pr-16">
+        <div class="rounded-[32px] overflow-hidden shadow-[0_30px_60px_-30px_rgba(18,17,23,.4)]">
+          <img src="/images/maitre-spirituel-fabo-babassa-3.webp" alt="Maître spirituel Marabout Fabo Babassa à Paris" title="Le Marabout Fabo Babassa" width="400" height="500" class="w-full aspect-[4/5] object-cover" loading="lazy" decoding="async" />
+        </div>
+        <div class="absolute right-0 bottom-0 w-[48%] rounded-[24px] overflow-hidden ring-[6px] ring-white shadow-[0_24px_50px_-20px_rgba(18,17,23,.45)]">
+          <img src="/images/voyance-africaine-traditionnelle-paris-1.webp" alt="Consultation de voyance africaine traditionnelle et géomancie sacrée" title="Voyance africaine traditionnelle" width="400" height="500" class="w-full aspect-[4/5] object-cover" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-7 reveal">
+      <p class="eyebrow mb-6">À Propos du Marabout Fabo</p>
+      <h2 class="display text-[34px] sm:text-[44px] lg:text-[52px] text-ink-900">
+        Marabout Fabo Babassa : Un Grand Voyant Médium Sérieux et Honnête à Paris
+      </h2>
+
+      <div class="mt-7 space-y-5 max-w-[640px]">
+        <p class="lead">
+          Trouver un <strong class="text-ink-900 font-semibold">vrai marabout sérieux et honnête en France</strong> est aujourd'hui difficile face aux nombreuses fausses promesses sur internet. Je suis le <strong class="text-accent-600 font-semibold">Marabout Fabo Babassa</strong>, grand voyant médium et maître en sciences occultes traditionnelles africaines, installé à <strong class="text-ink-900 font-semibold">Paris</strong>.
+        </p>
+        <p class="text-[15px] leading-[1.8] text-ink-600">
+          Issu d'une grande lignée d'initiés et de guérisseurs spirituels, j'exerce mon don de médiumnité et la pratique des rituels sacrés depuis de nombreuses années pour venir en aide aux femmes et aux hommes qui traversent des épreuves sentimentales, familiales ou professionnelles.
+        </p>
+      </div>
+
+      <div class="mt-8">
+        <a href={SITE_CONFIG.whatsappUrls.voyance} target="_blank" rel="noopener noreferrer" class="btn-ink">
+          <span>Demander une voyance</span><Icon name="arrow" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

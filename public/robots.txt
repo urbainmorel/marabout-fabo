@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.marabout-fabo-babassa.fr/sitemap-index.xml

@@ -1,0 +1,85 @@
+---
+import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+import { getAllPosts } from '../../lib/sanityClient';
+import type { BlogPost } from '../../data/postsData';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+export interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+
+// Helper léger de conversion Markdown vers HTML sémantique
+function markdownToHtml(md: string): string {
+  if (!md) return '';
+
+  return md
+    .split('\n\n')
+    .map((block) => {
+      const trimmed = block.trim();
+      if (!trimmed) return '';
+
+      // H2
+      if (trimmed.startsWith('## ')) {
+        const text = trimmed.replace(/^## /, '');
+        return `<h2>${parseInline(text)}</h2>`;
+      }
+      // H3
+      if (trimmed.startsWith('### ')) {
+        const text = trimmed.replace(/^### /, '');
+        return `<h3>${parseInline(text)}</h3>`;
+      }
+      // Blockquote / Alert
+      if (trimmed.startsWith('> ')) {
+        const text = trimmed.replace(/^>\s*/gm, '');
+        return `<blockquote>${parseInline(text)}</blockquote>`;
+      }
+      // Unordered list
+      if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+        const items = trimmed
+          .split('\n')
+          .map((line) => line.replace(/^[-*]\s*/, ''))
+          .map((item) => `<li><span>${parseInline(item)}</span></li>`)
+          .join('');
+        return `<ul>${items}</ul>`;
+      }
+      // Ordered list
+      if (/^\d+\.\s/.test(trimmed)) {
+        const items = trimmed
+          .split('\n')
+          .map((line) => line.replace(/^\d+\.\s*/, ''))
+          .map((item) => `<li><span>${parseInline(item)}</span></li>`)
+          .join('');
+        return `<ol>${items}</ol>`;
+      }
+
+      // Standard Paragraph
+      return `<p>${parseInline(trimmed)}</p>`;
+    })
+    .join('');
+}
+
+function parseInline(text: string): string {
+  return text
+    // Strong / Bold
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    // Links with proper styling and internal linking preservation
+    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>')
+    // Line breaks
+    .replace(/\n/g, '<br />');
+}
+
+const htmlContent = markdownToHtml(post.content);
+---
+
+<BlogPostLayout post={post}>
+  <div set:html={htmlContent} />
+</BlogPostLayout>

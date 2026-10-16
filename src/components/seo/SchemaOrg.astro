@@ -1,0 +1,125 @@
+---
+import { SITE_CONFIG } from '../../config/site';
+
+export interface Props {
+  isArticle?: boolean;
+  articleData?: {
+    title: string;
+    description: string;
+    url: string;
+    image: string;
+    publishedAt: string;
+  };
+}
+
+const { isArticle = false, articleData } = Astro.props;
+
+const graph: any[] = [
+  {
+    '@type': 'ProfessionalService',
+    '@id': `${SITE_CONFIG.siteUrl}/#marabout`,
+    name: 'Marabout Fabo Babassa - Retour Affectif & Voyance Médium Paris',
+    description:
+      'Grand marabout voyant médium africain sérieux à Paris. Spécialiste du retour affectif rapide, du retour de l\'être aimé, de la fidélité conjugale, du désenvoûtement et des travaux occultes à distance.',
+    url: `${SITE_CONFIG.siteUrl}/`,
+    telephone: '+33676197585',
+    priceRange: '€€',
+    image: `${SITE_CONFIG.siteUrl}/images/marabout-fabo-babassa-retour-affectif-paris.webp`,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Paris',
+      addressRegion: 'Île-de-France',
+      addressCountry: 'FR',
+    },
+    areaServed: [
+      { '@type': 'Country', name: 'France' },
+      { '@type': 'Country', name: 'Belgique' },
+      { '@type': 'Country', name: 'Suisse' },
+      { '@type': 'Country', name: 'Canada' },
+    ],
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '08:00',
+      closes: '23:00',
+    },
+    sameAs: ['https://wa.me/33676197585'],
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': `${SITE_CONFIG.siteUrl}/#faq`,
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'En combien de temps agit un rituel de retour affectif ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Chaque situation amoureuse est unique. Grâce à la puissance des travaux occultes de haute magie blanche et rouge, les premiers signes (apaisement, déblocage, reprise de contact de votre ex) se manifestent généralement sous 3 à 21 jours. Le délai précis vous est communiqué dès la première étude de voyance.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Les travaux de retour de l\'être aimé comportent-ils un danger ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Non, aucun danger ni choc en retour. Le Marabout Fabo Babassa pratique uniquement des rituels d\'amour bienveillants et protégés qui réveillent les sentiments sincères et enlèvent les blocages sans jamais nuire à la personne aimée.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Comment consulter le Marabout Fabo Babassa à Paris ou à distance ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Vous pouvez consulter le Marabout Fabo Babassa directement à son cabinet à Paris sur rendez-vous, ou à distance par WhatsApp et téléphone au 06 76 19 75 85. Les rituels à distance sur photos, prénoms et dates de naissance ont exactement la même efficacité.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Mon ex saura-t-il que j\'ai fait appel à un marabout pour le faire revenir ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Jamais. Le travail spirituel agit de manière invisible et naturelle sur le cœur et les pensées. Votre partenaire reviendra vers vous de son propre gré avec le sentiment que vous lui manquez profondément. La discrétion est garantie à 100 %.',
+        },
+      },
+    ],
+  },
+];
+
+if (isArticle && articleData) {
+  graph.push({
+    '@type': 'Article',
+    '@id': `${articleData.url}#article`,
+    headline: articleData.title,
+    description: articleData.description,
+    url: articleData.url,
+    image: (() => {
+      const img = articleData.image || '/images/og-banner-marabout-fabo-babassa.webp';
+      return img.startsWith('http') ? img : `${SITE_CONFIG.siteUrl}${img}`;
+    })(),
+    datePublished: articleData.publishedAt,
+    dateModified: articleData.publishedAt,
+    author: {
+      '@type': 'Person',
+      name: 'Marabout Fabo Babassa',
+      jobTitle: 'Grand Marabout Voyant Médium Africain',
+      url: `${SITE_CONFIG.siteUrl}/`,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Marabout Fabo Babassa',
+      url: `${SITE_CONFIG.siteUrl}/`,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': articleData.url,
+    },
+  });
+}
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': graph,
+});
+---
+
+<script type="application/ld+json" set:html={jsonLd} />

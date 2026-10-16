@@ -1,0 +1,30 @@
+---
+import { SITE_CONFIG } from '../../config/site';
+import Icon from '../ui/Icon.astro';
+---
+
+<!-- Bouton flottant (desktop) -->
+<a
+  href={SITE_CONFIG.whatsappUrls.retourAffectif}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="hidden md:flex fixed bottom-6 right-6 z-50 group items-center gap-3 bg-ink-900 text-white pl-2 pr-6 py-2 rounded-full ring-1 ring-white/10 shadow-[0_20px_50px_-15px_rgba(0,0,0,.6)] hover:-translate-y-0.5 transition-transform duration-300"
+>
+  <span class="relative w-11 h-11 rounded-full bg-whatsapp flex items-center justify-center flex-shrink-0">
+    <Icon name="wa" class="relative w-6 h-6" />
+  </span>
+  <span class="text-left leading-tight">
+    <span class="block text-[10px] uppercase tracking-[0.2em] text-accent-300 font-medium">Réponse discrète 7j/7</span>
+    <span class="block text-[14px] font-semibold">Écrire au Marabout</span>
+  </span>
+</a>
+
+<!-- Barre d'action mobile -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-[9999] bg-ink-900/95 backdrop-blur-lg border-t border-white/10 px-3 pt-2.5 pb-[max(0.65rem,env(safe-area-inset-bottom))] flex gap-2">
+  <a href={SITE_CONFIG.phoneHref} class="w-[38%] h-12 rounded-full flex items-center justify-center gap-2 border border-white/20 text-white text-[12px] font-semibold uppercase tracking-[0.12em] active:scale-[.98] transition-transform">
+    <Icon name="phone" class="w-4 h-4 text-accent-300" /><span>Appeler</span>
+  </a>
+  <a href={SITE_CONFIG.whatsappUrls.retourAffectif} target="_blank" rel="noopener noreferrer" class="w-[62%] h-12 rounded-full flex items-center justify-center gap-2 bg-whatsapp text-white text-[12px] font-semibold uppercase tracking-[0.12em] active:scale-[.98] transition-transform">
+    <Icon name="wa" class="w-5 h-5" /><span>WhatsApp</span>
+  </a>
+</div>

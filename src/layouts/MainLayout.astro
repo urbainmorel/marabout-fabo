@@ -1,0 +1,65 @@
+---
+import BaseHead from '../components/seo/BaseHead.astro';
+import SchemaOrg from '../components/seo/SchemaOrg.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import FloatingWhatsApp from '../components/layout/FloatingWhatsApp.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  isArticle?: boolean;
+  articleData?: {
+    title: string;
+    description: string;
+    url: string;
+    image: string;
+    publishedAt: string;
+  };
+}
+
+const { title, description, canonicalUrl, image, type = 'website', isArticle = false, articleData } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <BaseHead title={title} description={description} canonicalUrl={canonicalUrl} image={image} type={type} />
+    <SchemaOrg isArticle={isArticle} articleData={articleData} />
+  </head>
+  <body class="bg-mist-100 text-ink-900 min-h-screen flex flex-col font-sans">
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <Header />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+    <FloatingWhatsApp />
+    <script>
+      // IntersectionObserver fluide et ultra-performant pour apparition / disparition au scroll
+      // rootMargin positif : garantit qu'aucun élément ne clignote ou ne disparaît tant qu'il est visible à l'écran
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-in');
+            e.target.classList.remove('is-above');
+          } else {
+            e.target.classList.remove('is-in');
+            // Maintien de la direction de sortie : par le haut ou par le bas
+            if (e.boundingClientRect.top < 0) {
+              e.target.classList.add('is-above');
+            } else {
+              e.target.classList.remove('is-above');
+            }
+          }
+        });
+      }, { rootMargin: '10px 0px 10px 0px', threshold: 0.02 });
+
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

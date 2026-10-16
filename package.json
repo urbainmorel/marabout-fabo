@@ -1,0 +1,39 @@
+{
+  "name": "marabout-fabo-babassa",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "check": "astro check",
+    "preview": "astro preview",
+    "astro": "astro",
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "seed-sanity": "npx tsx --env-file=.env scripts/seed-sanity-posts.ts"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/react": "^3.6.3",
+    "@astrojs/sitemap": "^3.1.6",
+    "@astrojs/tailwind": "^5.1.5",
+    "@portabletext/react": "^3.1.0",
+    "@sanity/astro": "^3.2.3",
+    "@sanity/client": "^7.14.1",
+    "@sanity/image-url": "^1.1.0",
+    "astro": "^4.16.18",
+    "astro-portabletext": "^1.0.1",
+    "groq": "^3.78.1",
+    "lucide-astro": "^0.477.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sanity": "^3.78.1",
+    "styled-components": "^6.6.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
+}

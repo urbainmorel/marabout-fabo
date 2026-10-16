@@ -1,0 +1,90 @@
+---
+import { SITE_CONFIG } from '../../config/site';
+import Icon from '../ui/Icon.astro';
+import Logo from '../ui/Logo.astro';
+
+const nav = [
+  ['/#accueil', 'Accueil'],
+  ['/#le-marabout', 'Le Marabout Fabo'],
+  ['/#retour-affectif', "Puissants Rituels d'Amour"],
+  ['/#voyance-desenvoutement', 'Voyance & Protection'],
+  ['/blog', 'Blog & Guides'],
+];
+const poles = [
+  ['/#retour-affectif', 'Retour Affectif Immédiat'],
+  ['/#retour-affectif', 'Sauvetage & Réconciliation de Couple'],
+  ['/#retour-affectif', 'Fidélité & Cadenas d’Amour'],
+  ['/#retour-affectif', 'Éloignement Définitif de Rivaux'],
+  ['/#voyance-desenvoutement', 'Voyance Pure & Flashs Médium'],
+  ['/#voyance-desenvoutement', 'Désenvoûtement & Protection Mauvais Œil'],
+];
+const linkCls = 'text-white/70 hover:text-white transition-colors';
+const titleCls = 'text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 mb-6';
+---
+
+<footer class="bg-ink-950 text-white/70 pt-20 pb-28 md:pb-12 border-t border-white/10">
+  <div class="max-w-[1320px] mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+      <div class="lg:col-span-4">
+        <a href="/#accueil" class="flex items-center gap-3.5 mb-6 group" aria-label="Accueil - Marabout Fabo Babassa">
+          <span class="w-11 h-11 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center p-2 text-white group-hover:bg-accent-500 transition-colors duration-300">
+            <Logo class="w-7 h-7" />
+          </span>
+          <span class="font-serif text-[24px] text-white">{SITE_CONFIG.name}</span>
+        </a>
+        <p class="text-[14px] leading-[1.8] mb-8 max-w-[360px]">
+          Grand marabout voyant médium africain sérieux à Paris. Spécialiste reconnu du retour affectif rapide, des travaux occultes d'amour, du désenvoûtement et de la voyance pure en cabinet et à distance.
+        </p>
+        <div class="flex items-center gap-3">
+          <a href={SITE_CONFIG.whatsappUrls.general} target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center text-white hover:bg-whatsapp hover:border-whatsapp transition-colors" aria-label="Contacter sur WhatsApp">
+            <Icon name="wa" class="w-[18px] h-[18px]" />
+          </a>
+          <a href={SITE_CONFIG.phoneHref} class="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center text-white hover:bg-accent-500 hover:text-white hover:border-accent-500 transition-colors" aria-label="Appeler par téléphone">
+            <Icon name="phone" class="w-[18px] h-[18px]" />
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2">
+        <h3 class={titleCls}>Navigation Rapide</h3>
+        <ul class="space-y-3 text-[14px]">
+          {nav.map(([href, label]) => <li><a href={href} class={linkCls}>{label}</a></li>)}
+        </ul>
+      </div>
+
+      <div class="lg:col-span-3">
+        <h3 class={titleCls}>Pôles d'Intervention</h3>
+        <ul class="space-y-3 text-[14px]">
+          {poles.map(([href, label]) => <li><a href={href} class={linkCls}>{label}</a></li>)}
+        </ul>
+      </div>
+
+      <div class="lg:col-span-3">
+        <h3 class={titleCls}>Cabinet &amp; Contact Paris</h3>
+        <ul class="space-y-4 text-[14px] leading-relaxed">
+          <li>Paris, Île-de-France (Cabinet sur RDV &amp; Travaux à distance partout en France, Belgique, Suisse, DOM-TOM, Canada)</li>
+          <li>
+            <a href={SITE_CONFIG.whatsappUrls.general} target="_blank" rel="noopener noreferrer" class="text-white hover:text-accent-300 transition-colors">
+              WhatsApp : {SITE_CONFIG.phoneIntl}
+            </a>
+          </li>
+          <li>
+            <a href={SITE_CONFIG.phoneHref} class="text-white hover:text-accent-300 transition-colors">
+              Téléphone : {SITE_CONFIG.phoneDisplay}
+            </a>
+          </li>
+          <li>Disponible 7j/7 de 08h00 à 23h00</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-white/10 flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between text-[12px] text-white/50">
+      <p class="font-medium">
+        © 2026 Marabout Fabo Babassa – Grand Voyant Médium &amp; Spécialiste du Retour Affectif à Paris. Tous droits réservés.
+      </p>
+      <p class="max-w-[560px] leading-relaxed lg:text-right italic">
+        Note légale : Les travaux occultes et consultations de voyance s'adressent uniquement aux personnes majeures. Les résultats peuvent varier d'une personne à une autre selon chaque situation spirituelle et émotionnelle.
+      </p>
+    </div>
+  </div>
+</footer>

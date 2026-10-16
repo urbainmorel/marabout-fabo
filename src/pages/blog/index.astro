@@ -1,0 +1,86 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import PostCard from '../../components/ui/PostCard.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { getAllPosts } from '../../lib/sanityClient';
+import { SITE_CONFIG } from '../../config/site';
+
+const posts = await getAllPosts();
+
+const categories = [
+  { id: 'all', label: 'Tous les Guides' },
+  { id: 'retour-affectif', label: 'Retour Affectif & Amour' },
+  { id: 'voyance-medium', label: 'Voyance & Médiumnité' },
+  { id: 'protection-chance', label: 'Désenvoûtement, Protection & Chance' },
+];
+---
+
+<MainLayout
+  title={`Blog SEO & Guides Ésotériques | ${SITE_CONFIG.name}`}
+  description="Consultez les 20 guides complets du Marabout Fabo Babassa : rituels de retour affectif, reconquête amoureuse, protection contre le mauvais œil et voyance médium."
+  canonicalUrl={`${SITE_CONFIG.siteUrl}/blog`}
+>
+  <div class="relative bg-[radial-gradient(50%_70%_at_50%_0%,#F7DCE4_0%,transparent_75%)]">
+    <div class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-20 pb-6 lg:pt-28 lg:pb-8 text-center">
+      <p class="eyebrow mb-6">Cocon Sémantique &amp; Savoir Traditionnel</p>
+      <h1 class="display text-[40px] sm:text-[56px] lg:text-[68px] text-ink-900 max-w-[900px] mx-auto">
+        Guides &amp; Rituels du Marabout Fabo Babassa
+      </h1>
+      <p class="lead mt-6 max-w-[680px] mx-auto">
+        Comprendre le fonctionnement des forces invisibles, des rituels d'amour sans danger, du désenvoûtement et de la voyance médiumnique à Paris et à distance.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-[1320px] mx-auto px-5 sm:px-8 py-16 lg:py-24">
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-14" id="categoryFilters">
+      {categories.map((cat, idx) => (
+        <button
+          class={`filter-btn rounded-full px-5 py-2.5 text-[13.5px] font-semibold transition-colors ${idx === 0 ? 'bg-ink-900 text-white' : 'bg-mist-200 text-ink-700 hover:bg-mist-300'}`}
+          data-category={cat.id}
+          aria-pressed={idx === 0 ? 'true' : 'false'}
+        >
+          {cat.label}
+        </button>
+      ))}
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14" id="postsGrid">
+      {posts.map((post) => <PostCard post={post} heading="h2" class="post-card" />)}
+    </div>
+
+    <div class="on-dark grain mt-20 rounded-[32px] bg-ink-900 text-white px-8 sm:px-14 py-14 sm:py-16 text-center">
+      <h3 class="display text-[30px] sm:text-[40px] text-white max-w-[760px] mx-auto">
+        Vous avez des questions sur votre situation sentimentale ou spirituelle ?
+      </h3>
+      <p class="lead mt-5 max-w-[620px] mx-auto">
+        Le Marabout Fabo Babassa analyse votre dossier en toute franchise et vous répond directement sur WhatsApp au 06 76 19 75 85.
+      </p>
+      <a href={SITE_CONFIG.whatsappUrls.retourAffectif} target="_blank" rel="noopener noreferrer" class="btn-wa mt-9">
+        <Icon name="wa" /><span>Échanger avec le Marabout</span>
+      </a>
+    </div>
+  </div>
+</MainLayout>
+
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const postCards = document.querySelectorAll<HTMLElement>('.post-card');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => {
+        const active = b === btn;
+        b.classList.toggle('bg-ink-900', active);
+        b.classList.toggle('text-white', active);
+        b.classList.toggle('bg-mist-200', !active);
+        b.classList.toggle('text-ink-700', !active);
+        b.setAttribute('aria-pressed', String(active));
+      });
+      const cat = btn.dataset.category;
+      postCards.forEach((card) => {
+        card.style.display = cat === 'all' || card.dataset.category === cat ? 'flex' : 'none';
+      });
+    });
+  });
+</script>
