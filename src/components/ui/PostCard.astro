@@ -8,17 +8,17 @@ const date = new Date(post.publishedAt).toLocaleDateString('fr-FR', { day: 'nume
 <article class={`card card-hover group p-2.5 flex flex-col reveal ${cls}`} data-category={post.category}>
   <a href={`/blog/${post.slug}`} class="relative block media aspect-[3/2]" tabindex="-1" aria-hidden="true">
     <img src={post.image || '/images/og-banner-marabout-fabo-babassa.webp'} alt={post.imageAlt || post.title} title={post.title} width="600" height="400" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.05]" loading="lazy" decoding="async" />
-    <span class="absolute top-3 left-3 rounded-full bg-white/90 backdrop-blur px-3 py-1 text-[11.5px] font-semibold text-ink-800">{post.categoryLabel}</span>
+    <span class="absolute top-3 left-3 rounded-full bg-white/90 backdrop-blur px-3 py-1 text-[12.5px] sm:text-[11.5px] font-semibold text-ink-800">{post.categoryLabel}</span>
   </a>
   <div class="p-5 sm:p-6 flex flex-col flex-grow">
-    <span class="text-[12.5px] text-ink-600/80 mb-2">{date}</span>
+    <span class="text-[13.5px] sm:text-[12.5px] text-ink-600/80 mb-2">{date}</span>
     <H class="font-serif text-[21px] leading-[1.28] text-ink-900 mb-3">
       <a href={`/blog/${post.slug}`} class="hover:text-accent-600 transition-colors">{post.title}</a>
     </H>
-    {showExcerpt && <p class="text-[14px] leading-[1.75] text-ink-600 line-clamp-3 mb-6">{post.excerpt}</p>}
+    {showExcerpt && <p class="text-[15.5px] sm:text-[14px] leading-[1.75] text-ink-600 line-clamp-3 mb-6">{post.excerpt}</p>}
     <div class="mt-auto flex items-center justify-between pt-5 border-t hairline">
       <a href={`/blog/${post.slug}`} class="link-arrow"><span>Lire le guide</span><span>→</span></a>
-      <span class="text-[12px] text-ink-600/70">{post.readingTime}</span>
+      <span class="text-[13px] sm:text-[12px] text-ink-600/70">{post.readingTime}</span>
     </div>
   </div>
 </article>

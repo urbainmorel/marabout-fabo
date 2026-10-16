@@ -20,6 +20,12 @@ body {
   font-family: 'Manrope', system-ui, sans-serif;
   overflow-x: hidden;
 }
+@media (max-width: 639px) {
+  body {
+    font-size: 16.5px;
+    line-height: 1.75;
+  }
+}
 body.menu-open { overflow: hidden; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -42,7 +48,7 @@ h1, h2, h3, h4, h5, h6 {
 @layer components {
   /* Sur-titre en pastille */
   .eyebrow {
-    @apply inline-flex items-center gap-2.5 rounded-full bg-mist-200 px-3.5 py-1.5 text-[11.5px] font-semibold tracking-[0.04em] text-ink-700;
+    @apply inline-flex items-center gap-2.5 rounded-full bg-mist-200 px-3.5 py-1.5 text-[12.5px] sm:text-[11.5px] font-semibold tracking-[0.04em] text-ink-700;
   }
   .eyebrow::before {
     content: '';
@@ -54,12 +60,12 @@ h1, h2, h3, h4, h5, h6 {
   .display {
     @apply font-heading font-normal tracking-[-0.015em] leading-[1.24] sm:leading-[1.20] lg:leading-[1.18];
   }
-  .lead { @apply text-[17px] leading-[1.75] text-ink-600; }
-  .on-dark .lead { @apply text-white/65; }
+  .lead { @apply text-[18px] sm:text-[17px] leading-[1.8] sm:leading-[1.75] text-ink-600; }
+  .on-dark .lead { @apply text-white/80 sm:text-white/65; }
 
   /* Boutons pilules */
   .btn {
-    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-4 text-[14px] font-semibold transition-all duration-300 text-center;
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-4 text-[15px] sm:text-[14px] font-semibold transition-all duration-300 text-center;
   }
   .btn svg { @apply w-[18px] h-[18px] flex-shrink-0; }
   .btn-wa { @apply btn bg-whatsapp text-white hover:bg-whatsapp-hover hover:-translate-y-0.5; box-shadow: 0 12px 30px -12px rgba(31,143,85,.7); }
@@ -68,7 +74,7 @@ h1, h2, h3, h4, h5, h6 {
   .on-dark .btn-line { @apply bg-white/5 ring-white/20 text-white hover:bg-white hover:text-ink-900; }
 
   .link-arrow {
-    @apply inline-flex items-center gap-2 text-[13.5px] font-semibold text-accent-600 transition-colors;
+    @apply inline-flex items-center gap-2 text-[14.5px] sm:text-[13.5px] font-semibold text-accent-600 transition-colors;
   }
   .link-arrow span:last-child { @apply transition-transform duration-300; }
   .link-arrow:hover span:last-child, .group:hover .link-arrow span:last-child { transform: translateX(4px); }

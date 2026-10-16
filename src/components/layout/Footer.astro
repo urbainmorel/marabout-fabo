@@ -32,7 +32,7 @@ const titleCls = 'text-[11px] font-semibold uppercase tracking-[0.22em] text-whi
           </span>
           <span class="font-serif text-[24px] text-white">{SITE_CONFIG.name}</span>
         </a>
-        <p class="text-[14px] leading-[1.8] mb-8 max-w-[360px]">
+        <p class="text-[15.5px] sm:text-[14px] leading-[1.8] mb-8 max-w-[360px]">
           Grand marabout voyant médium africain sérieux à Paris. Spécialiste reconnu du retour affectif rapide, des travaux occultes d'amour, du désenvoûtement et de la voyance pure en cabinet et à distance.
         </p>
         <div class="flex items-center gap-3">
@@ -47,21 +47,21 @@ const titleCls = 'text-[11px] font-semibold uppercase tracking-[0.22em] text-whi
 
       <div class="lg:col-span-2">
         <h3 class={titleCls}>Navigation Rapide</h3>
-        <ul class="space-y-3 text-[14px]">
+        <ul class="space-y-3 text-[15.5px] sm:text-[14px]">
           {nav.map(([href, label]) => <li><a href={href} class={linkCls}>{label}</a></li>)}
         </ul>
       </div>
 
       <div class="lg:col-span-3">
         <h3 class={titleCls}>Pôles d'Intervention</h3>
-        <ul class="space-y-3 text-[14px]">
+        <ul class="space-y-3 text-[15.5px] sm:text-[14px]">
           {poles.map(([href, label]) => <li><a href={href} class={linkCls}>{label}</a></li>)}
         </ul>
       </div>
 
       <div class="lg:col-span-3">
         <h3 class={titleCls}>Cabinet &amp; Contact Paris</h3>
-        <ul class="space-y-4 text-[14px] leading-relaxed">
+        <ul class="space-y-4 text-[15.5px] sm:text-[14px] leading-relaxed">
           <li>Paris, Île-de-France (Cabinet sur RDV &amp; Travaux à distance partout en France, Belgique, Suisse, DOM-TOM, Canada)</li>
           <li>
             <a href={SITE_CONFIG.whatsappUrls.general} target="_blank" rel="noopener noreferrer" class="text-white hover:text-accent-300 transition-colors">
@@ -78,7 +78,7 @@ const titleCls = 'text-[11px] font-semibold uppercase tracking-[0.22em] text-whi
       </div>
     </div>
 
-    <div class="pt-8 border-t border-white/10 flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between text-[12px] text-white/50">
+    <div class="pt-8 border-t border-white/10 flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between text-[13px] sm:text-[12px] text-white/50">
       <div class="flex flex-col sm:flex-row gap-2 sm:gap-4 items-start sm:items-center">
         <p class="font-medium">
           © 2026 Marabout Fabo Babassa – Grand Voyant Médium à Paris. Tous droits réservés.
