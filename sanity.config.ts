@@ -1,5 +1,6 @@
 import { defineConfig } from 'sanity';
 import { structureTool, type StructureBuilder } from 'sanity/structure';
+import { media } from 'sanity-plugin-media';
 import { schemaTypes } from './sanity/schemas';
 
 const projectId =
@@ -22,6 +23,7 @@ export default defineConfig({
   dataset,
 
   plugins: [
+    media(),
     structureTool({
       structure: (S: StructureBuilder) =>
         S.list()
